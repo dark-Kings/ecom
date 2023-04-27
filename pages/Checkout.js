@@ -111,7 +111,7 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
 
 
       <h1 className='text-3xl font-bold my-8 text-center'>Checkout</h1>
-      <h2 className='text-xl mx-auto font-semibold mb-4'>1. Delivery Details</h2>
+      <h2 className='text-xl mx-auto font-semibold mb-4'>1. Delivery Details.</h2>
       <div className="mx-auto flex">
         <div className="px-2 w-1/2">
           <label htmlFor="name" 
