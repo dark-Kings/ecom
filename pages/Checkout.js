@@ -68,33 +68,33 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
 
 
 
-    let config = {
-      "root": "",
-      "flow": "DEFAULT",
-      "data": {
-        "orderId": Oid,
-        "token": txnToken,
-        "tokenType": "TXN_TOKEN",
-        "amount": subTotal,
-        "userDetail": {
-          "mobileNumber": "",
-          "name": ""
-        }
-      },
-      "merchant": {
-        "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
-        "name": "Anshul",
-        "redirect": true
-      },
+    // let config = {
+    //   "root": "",
+    //   "flow": "DEFAULT",
+    //   "data": {
+    //     "orderId": Oid,
+    //     "token": txnToken,
+    //     "tokenType": "TXN_TOKEN",
+    //     "amount": subTotal,
+    //     "userDetail": {
+    //       "mobileNumber": "",
+    //       "name": ""
+    //     }
+    //   },
+    //   "merchant": {
+    //     "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
+    //     "name": "Anshul",
+    //     "redirect": true
+    //   },
 
-      "handler": {}
-    };
+    //   "handler": {}
+    // };
 
-    Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
-      window.Paytm.CheckoutJs.invoke();
-    }).catch(function onError(error) {
-      console.log("error =>", error);
-    })
+    // Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
+    //   window.Paytm.CheckoutJs.invoke();
+    // }).catch(function onError(error) {
+    //   console.log("error =>", error);
+    // })
   }
 
   return (
