@@ -1,10 +1,90 @@
 import Link from 'next/link';
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useRouter } from 'next/router';
 import {AiOutlineLock } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+
+  const router = useRouter();
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+  
+ useEffect(() => {
+  if(localStorage.getItem('token')){
+    router.push('/')
+  }
+ }, [])
+
+  const handleChange = (e) => {
+
+   if (e.target.name == 'email') {
+      setemail(e.target.value)
+    }
+    else if (e.target.name == 'password') {
+      setpassword(e.target.value)
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = {  email, password }
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    let response = await res.json();
+    setemail("")
+    setpassword("")
+
+    if(response.success){
+      localStorage.setItem('token',response.token)
+    toast.success('Your are successfully logged in', {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setTimeout(() => {
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/`)
+    }, 800);
+  }else{
+    toast.error(response.error, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
+  }
+
   return (
     <>
+    <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
@@ -23,15 +103,17 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6"  method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email-address"
+                 onChange={handleChange}
+                  id="email"
+                  value={email}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -45,7 +127,9 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                 onChange={handleChange}
                   id="password"
+                  value={password}
                   name="password"
                   type="password"
                   autoComplete="current-password"
@@ -57,17 +141,7 @@ const Login = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-500"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  Remember me
-                </label>
-              </div>
+          
 
               <div className="text-sm">
                 <Link href="/Forgot" className="font-medium text-pink-600 hover:text-pink-500">

@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineLock } from 'react-icons/ai';
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import  { useRouter } from 'next/router';
 
 const Signup = () => {
+   const  router = useRouter();
   const [name, setname] = useState("")
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
+
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      router.push('/')
+    }
+   }, [])
 
   const handleChange = (e) => {
     if (e.target.name == 'name') {
@@ -24,17 +32,18 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = { name, email, password }
-    const res = await fetch('http://localhost:3000/api/signup', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-    let response = await (await res).json();
+    let response = await res.json();
     setemail("")
     setname("")
     setpassword("")
+    if(response.success){
     toast.success('Your account have been created', {
       position: "bottom-left",
       autoClose: 5000,
@@ -45,6 +54,10 @@ const Signup = () => {
       progress: undefined,
       theme: "light",
     });
+    setTimeout(() => {
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/Login`)
+    }, 800);
+  }
   }
   return (
     <div>
