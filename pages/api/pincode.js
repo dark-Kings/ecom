@@ -1,3 +1,9 @@
 export default function handler(req, res) {
-    res.status(200).json([249202,249202,246195,246185])
+  
+    let pincodes={
+      "249202":["Rishikesh","Uttrakhand"],
+      "246195":["Pantnagar","Uttrakhand"]
+    }
+
+    res.status(200).json(pincodes)
   }

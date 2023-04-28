@@ -20,8 +20,7 @@ const handler = async (req, res) => {
       }
     // initiate shipping
     // redirect user to order confirmation page
-    // console.log("/Order?id="+order._id)
-    // res.redirect(`/Order?id=` + order._id,200)
+
     res.json(`/Order?id=` + order._id)
   
   }
