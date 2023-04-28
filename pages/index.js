@@ -6,6 +6,7 @@ import Arrivals from "../components/Arrivals";
 import Subscribe from "../components/Subscribe";
 import Testimonial from "../components/Testimonial";
 import TempProduct from "../components/TempProduct";
+import AllProducts from "../components/Products";
 // import { BrowserRouter } from "react-router-dom";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <Whyus />
       <Arrivals />
       <TempProduct />
+      {/* <AllProducts />       */}
       {/* <BrowserRouter> */}
         <Testimonial />
       {/* </BrowserRouter> */}
@@ -28,3 +30,16 @@ export default function Home() {
      </div>
   );
 }
+
+// http://localhost:3000/api/addproducts
+// [{
+//   "title": "shirt",
+//   "slug": "hii",
+//   "desc": "just image",
+//   "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fgoogle-wants-to-kill-the-url%2F&psig=AOvVaw0RsL7UjawztjMqaGnRMWSe&ust=1682714422055000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCPjx2-GWzP4CFQAAAAAdAAAAABAD",
+//   "category": "hoddies",
+//   "size": "XL",
+//   "color": "Red",
+//   "price": 45,
+//   "availableQty": 78
+//   }]
