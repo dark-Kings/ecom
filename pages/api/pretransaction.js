@@ -122,7 +122,9 @@ const handler = async (req, res) => {
         },
         body:JSON.stringify(data),
       })
-      res.status(200).json({  "txnToken": "fe795335ed3049c78a57271075f2199e1526969112097" })
+      const b= await a.json()
+    //   console.log(b)
+      res.status(200).json({  "txnToken": "fe795335ed3049c78a57271075f2199e1526969112097",b })
     
  }
 }

@@ -63,6 +63,11 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
 
     let txnRes = await a.json();
     let txnToken = txnRes.txnToken
+    let c= txnRes.b
+    // console.log(c)
+    if (typeof window !== "undefined") {
+      window.location.href = c
+    }
 
 
 
@@ -210,7 +215,7 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
           <BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link> */}
      
      
-        <Link href={'/Order'}>  <button disabled={disabled}  className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link>
+        <Link href={''}>  <button disabled={disabled}  className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link>
       </div>
     </div>
   )
