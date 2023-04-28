@@ -4,4 +4,20 @@
 
 body{
     overflow-x: hidden;
+    font-family: 'Playfair Display', serif;
 }
+
+.md\:justify-start{
+    z-index: 999;
+}
+
+.Mystyle_img-box__6CHs2, .Mystyle_col-md-4__g7Qx1, .Mystyle_col-md-4__g7Qx1{
+    display: flex;
+    justify-content: center;
+  }
+
+
+  
+  .leading-relaxed{
+    color: black;
+  }
