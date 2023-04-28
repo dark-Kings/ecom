@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs'
@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
+const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -16,6 +16,17 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
   const [state, setState] = useState('')
   const [city, setCity] = useState('')
   const [disabled, setDisabled] = useState(true)
+  const [user, setUser] = useState({value:null})
+
+  useEffect(()=>{
+    const user= JSON.parse(localStorage.getItem("myuser"))
+    if(user.token){
+         setUser(user)
+         setEmail(user.email)
+   }
+    
+
+  },[])
 
   const handleChange = async (e) => {
 
@@ -90,6 +101,7 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
       window.location.href = c
     }
     else {
+      clearCart()
       toast.error(txnRes.error, {
         position: "bottom-left",
         autoClose: 5000,
@@ -138,6 +150,7 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
     //  }
 
     // else{
+    //   clearCart()
     //   toast.error(txnRes.error, {
     //     position: "bottom-left",
     //     autoClose: 5000,
@@ -190,12 +203,23 @@ const Checkout = ({ cart, addtoCart, removefromCart, subTotal }) => {
         <div className="px-2 w-1/2">
           <label htmlFor="email"
             className="leading-7 text-sm text-gray-600">Email</label>
-          <input type="email"
+
+          {user && user.value? 
+            <input type="email"
+            id="email"
+            name="email"
+            readOnly={true}
+            value={user.email}
+            className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            :<input type="email"
             id="email"
             name="email"
             onChange={handleChange}
             value={email}
-            className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />}
+
+
+
         </div>
       </div>
       <div className="px-2 w-full">
