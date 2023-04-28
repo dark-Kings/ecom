@@ -1,20 +1,36 @@
 import Order from "../../models/Order"
+import Product from "../../models/Product"
 import connectDb from "../../middleware/mongoose"
 const https = require('https');
 var PaytmChecksum = require('paytmchecksum');
 
 
 const handler = async (req, res) => {
+  if(req.method==='POST'){
 
 
 
     // check if cart is tampered with -- [pending]
+    let product,sumTotal=0
+    for(let item in req.body.cart){
+      sumTotal+=req.body.cart[item].price*req.body.cart[item].qty
+      product= await Product.findOne({slug:item})
+    if( product.price!= req.body.cart[item].price){
+      res.status(200).json({success:false,'error':"The price of some item in your cart have changed. Please try again"})
+      return
+    }
+  }
+    if(sumTotal != req.body.subTotal){
+      res.status(200).json({success:false,'error':"The price of some item in your cart have changed. Please try again"})
+      return
+    }
+    
+     
 
     // check if the cart items are out of stocks --[pending]
 
     // check if the details are valid -- [pending]
     
-    if(req.method==='POST'){
         // intitiate an order   corresponding to this order id
         
         let order = new Order({
@@ -83,6 +99,7 @@ const handler = async (req, res) => {
     
 //                 post_res.on('end', function () {
 //                     console.log('Response: ', response);
+//                      response.success = true
 //                     resolve(JSON.parse(response).body)
 //                 });
 //             });
@@ -122,7 +139,9 @@ const handler = async (req, res) => {
         },
         body:JSON.stringify(data),
       })
-      res.status(200).json({  "txnToken": "fe795335ed3049c78a57271075f2199e1526969112097" })
+      const b= await a.json()
+    //   console.log(b)
+      res.status(200).json({  "txnToken": "fe795335ed3049c78a57271075f2199e1526969112097",b,success:true })
     
  }
 }

@@ -1,17 +1,35 @@
-import React, {useEffect} from 'react'
-import Order from '../models/Order'
-import mongoose from 'mongoose';
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Orders = () => {
   const router = useRouter();
+  const [orders, setorders] = useState([])
   useEffect(() => {
-    if(!localStorage.getItem('token')){
-      router.push('/')
+    const fetchOrder = async () => {
+
+
+        const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorders`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ token: localStorage.getItem('token') }),
+        })
+        let res = await a.json()
+        setorders(res.orders)
+      }
+      if (!localStorage.getItem('token')) {
+        router.push('/')
+      }
+      else {
+        fetchOrder()
     }
-   }, [router.query])
+
+
+  }, [router.query])
   return (
-    <div>
+    <div className='min-h-screen'>
       <h1 className='font-semibold text-center text-2xl p-8'>My Orders</h1>
       <div className="container  mx-auto">
         <div className="flex flex-col">
@@ -21,34 +39,28 @@ const Orders = () => {
                 <table className="min-w-full text-left text-sm font-light">
                   <thead className="border-b font-medium dark:border-neutral-500">
                     <tr>
-                      <th scope="col" className="px-6 py-4">#</th>
-                      <th scope="col" className="px-6 py-4">First</th>
-                      <th scope="col" className="px-6 py-4">Last</th>
-                      <th scope="col" className="px-6 py-4">Handle</th>
+                      <th scope="col" className="px-6 py-4">#Order ID</th>
+                      <th scope="col" className="px-6 py-4">Emailt</th>
+                      <th scope="col" className="px-6 py-4">Amount</th>
+                      <th scope="col" className="px-6 py-4">Details</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr
-                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-500 dark:border-neutral-500 dark:hover:bg-neutral-400">
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                      <td className="whitespace-nowrap px-6 py-4">Mark</td>
-                      <td className="whitespace-nowrap px-6 py-4">Otto</td>
-                      <td className="whitespace-nowrap px-6 py-4">@mdo</td>
-                    </tr>
-                    <tr
-                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-400">
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">2</td>
-                      <td className="whitespace-nowrap px-6 py-4">Jacob</td>
-                      <td className="whitespace-nowrap px-6 py-4">Thornton</td>
-                      <td className="whitespace-nowrap px-6 py-4">@fat</td>
-                    </tr>
-                    <tr
-                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-4 00">
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">3</td>
-                      <td className="whitespace-nowrap px-6 py-4">Larry</td>
-                      <td className="whitespace-nowrap px-6 py-4">Wild</td>
-                      <td className="whitespace-nowrap px-6 py-4">@twitter</td>
-                    </tr>
+                   {orders.map((item)=>{
+                    return  <tr
+                    className="border-b transition duration-300 ease-in-out hover:bg-neutral-500 dark:border-neutral-500 dark:hover:bg-neutral-400">
+                    <td className="whitespace-nowrap px-6 py-4 font-medium">{item.orderId}</td>
+                    <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
+                    <td className="whitespace-nowrap px-6 py-4">{item.amount}</td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <Link href={`/Order/?id=${item._id}`}>Details</Link>
+                    </td>
+                  </tr>
+             
+                   })}
+                    
+
+
                   </tbody>
                 </table>
               </div>
@@ -61,17 +73,17 @@ const Orders = () => {
 }
 
 
-export async function getServerSideProps(context) {
-  if (!mongoose.connections[0].readyState) {
+// export async function getServerSideProps(context) {
+//   if (!mongoose.connections[0].readyState) {
 
-    mongoose.connect(process.env.MONGO_URI)
-  }
-  let orders = await Order.find()
+//     mongoose.connect(process.env.MONGO_URI)
+//   }
+//   let orders = await Order.find()
 
 
-  return {
-    props: { orders: orders }, // will be passed to the page component as props
-  }
-}
+//   return {
+//     props: { orders: orders }, // will be passed to the page component as props
+//   }
+// }
 
 export default Orders
