@@ -46,8 +46,8 @@ const Orders = () => {
                     </tr>
                   </thead>
                   <tbody>
-                   {orders.map((item)=>{
-                    return  <tr
+                   {orders.map((item,i)=>{
+                    return  <tr key={i}
                     className="border-b transition duration-300 ease-in-out hover:bg-neutral-500 dark:border-neutral-500 dark:hover:bg-neutral-400">
                     <td className="whitespace-nowrap px-6 py-4 font-medium">{item.orderId}</td>
                     <td className="whitespace-nowrap px-6 py-4">{item.email}</td>

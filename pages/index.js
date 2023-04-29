@@ -84,16 +84,22 @@ export async function getServerSideProps(context) {
   let AllProducts = {}
   for(let item of products){
      if(item.title in AllProducts){
-       if(!AllProducts[item.title].color.includes(item.color) ){
+      if(!AllProducts[item.title].color.includes(item.color) && item.availableQty>0){
         AllProducts[item.title].color.push(item.color);
+       }
+      if(!AllProducts[item.title].size.includes(item.size) && item.availableQty>0){ 
         AllProducts[item.title].size.push(item.size);
        }
      }
      else{
-        AllProducts[item.title]=JSON.parse(JSON.stringify(item))
+      AllProducts[item.title]=JSON.parse(JSON.stringify(item))
       if(item.availableQty>0){
         AllProducts[item.title].color = [item.color]
         AllProducts[item.title].size=[item.size]
+      }
+      else{
+        AllProducts[item.title].color = []
+        AllProducts[item.title].size=[]
       }
      }
   }

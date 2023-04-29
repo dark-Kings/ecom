@@ -60,8 +60,10 @@ export async function getServerSideProps(context) {
   let Stickers = {}
   for(let item of products){
      if(item.title in Stickers){
-       if(!Stickers[item.title].color.includes(item.color) ){
+      if(!Stickers[item.title].color.includes(item.color) && item.availableQty>0){
         Stickers[item.title].color.push(item.color);
+       }
+      if(!Stickers[item.title].size.includes(item.size) && item.availableQty>0){ 
         Stickers[item.title].size.push(item.size);
        }
      }
@@ -70,6 +72,10 @@ export async function getServerSideProps(context) {
       if(item.availableQty>0){
         Stickers[item.title].color = [item.color]
         Stickers[item.title].size=[item.size]
+      }
+      else{
+        Stickers[item.title].color = []
+        Stickers[item.title].size=[]
       }
      }
   }
