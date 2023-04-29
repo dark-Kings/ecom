@@ -33,16 +33,22 @@ function MyApp({ Component, pageProps }) {
             console.error(error);
             localStorage.clear()
       }   
-       const token= localStorage.getItem("token")
-       if(token){
-            setUser({value:token})
+      
+      
+      
+      const myuser= JSON.parse(localStorage.getItem("myuser"))
+       if(myuser){
+            setUser({value:myuser.token,email:myuser.email})
       }
       setKey(Math.random)
 
        }, [router.query])
 
+
+
+
        const logout =()=>{
-            localStorage.removeItem('token');
+            localStorage.removeItem('myuser');
             setUser({value:null})
             setKey(Math.random())
             router.push(`${process.env.NEXT_PUBLIC_HOST}/`)
@@ -102,7 +108,7 @@ function MyApp({ Component, pageProps }) {
         onLoaderFinished={() => setProgress(0)}
       />
      {key && <Navbar logout={logout} user={user} key={key} cart={cart} addtoCart={addtoCart} removefromCart={removefromCart} clearCart={clearCart} subTotal={subTotal}/>}
-      <Component buyNow={buyNow} cart={cart} addtoCart={addtoCart} removefromCart={removefromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
+      <Component user={user} buyNow={buyNow} cart={cart} addtoCart={addtoCart} removefromCart={removefromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
       <Footer />
       </>
 }

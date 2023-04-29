@@ -1,11 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useRouter } from 'next/router'
 import MyOrder from '../models/Order'
 import mongoose from 'mongoose';
 
-const Order = ({order}) => {
+const Order = ({order,clearCart}) => {
   const router = useRouter()
   const products = order.products
+  useEffect(() => {
+    if(router.query.clearCart==1){
+      clearCart()
+    }
+  }, [])
+
   // console.log(order.orderId)
  
   return (
