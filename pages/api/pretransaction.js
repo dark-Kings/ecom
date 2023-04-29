@@ -1,20 +1,26 @@
 import Order from "../../models/Order"
 import Product from "../../models/Product"
 import connectDb from "../../middleware/mongoose"
+import pincodes from '../../pincodes.json'
 const https = require('https');
-var PaytmChecksum = require('paytmchecksum');
+const PaytmChecksum = require('paytmchecksum');
 
 
 const handler = async (req, res) => {
   if(req.method==='POST'){
-
+    
+    // check if the pincode is serviceable
+    if(!Object.keys(pincodes).includes(req.body.pincode)){
+      res.status(200).json({success:false,cartClear:false,'error':"This pincode you have entered is not serviceable"})
+      return
+    }
 
 
     // check if cart is tampered with -
     let product,sumTotal=0
    
      if(req.body.subTotal<=0){
-      res.status(200).json({success:false,'error':"Cart is empty. Please build your cart and try again"})
+      res.status(200).json({success:false,cartClear:false,'error':"Cart is empty. Please build your cart and try again"})
       return
      }
 
@@ -23,16 +29,16 @@ const handler = async (req, res) => {
       product= await Product.findOne({slug:item})
       // check if the cart items are out of stocks --[pending]
      if(product.availableQty<req.body.cart[item].qty) {
-      res.status(200).json({success:false,'error':"Some item in your cart went out of stock. Please try again"})
+      res.status(200).json({success:false,cartClear:true,'error':"Some item in your cart went out of stock. Please try again"})
       return
      }
     if( product.price!= req.body.cart[item].price){
-      res.status(200).json({success:false,'error':"The price of some item in your cart have changed. Please try again"})
+      res.status(200).json({success:false,cartClear:true,'error':"The price of some item in your cart have changed. Please try again"})
       return
     }
   }
     if(sumTotal != req.body.subTotal){
-      res.status(200).json({success:false,'error':"The price of some item in your cart have changed. Please try again"})
+      res.status(200).json({success:false,cartClear:true,'error':"The price of some item in your cart have changed. Please try again"})
       return
     }
     
@@ -42,12 +48,12 @@ const handler = async (req, res) => {
       
 
     // check if the details are valid --
-      if(req.body.phone.length !==10 || !Number.isInteger(req.body.phone)){
-        res.status(200).json({success:false,'error':"Please enter your 10 digit phone number and try again"})
+      if(req.body.phone.length !==10 || !Number.isInteger(Number(req.body.phone))){
+        res.status(200).json({success:false,cartClear:false,'error':"Please enter your 10 digit phone number and try again"})
         return
       }
-      if(req.body.pincode.length !==6 || !Number.isInteger(req.body.pincode)){
-        res.status(200).json({success:false,'error':"Please enter your 6 digit pincode and try again"})
+      if(req.body.pincode.length !==6 || !Number.isInteger(Number(req.body.pincode))){
+        res.status(200).json({success:false,cartClear:false,'error':"Please enter your 6 digit pincode and try again"})
         return
       }
 
@@ -162,7 +168,7 @@ const handler = async (req, res) => {
       })
       const b= await a.json()
     //   console.log(b)
-      res.status(200).json({  "txnToken": "fe795335ed3049c78a57271075f2199e1526969112097",b,success:true })
+      res.status(200).json({  "txnToken": "fe795335ed3049c78a57271075f2199e1526969112097",b,success:true,cartClear:false })
     
  }
 }

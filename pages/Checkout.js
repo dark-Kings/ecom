@@ -20,13 +20,23 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
   useEffect(()=>{
     const user= JSON.parse(localStorage.getItem("myuser"))
-    if(user.token){
+    if(user && user.token){
          setUser(user)
          setEmail(user.email)
    }
-    
-
   },[])
+
+  useEffect(() => {
+  
+
+    if (name.length >= 3 && email.length >= 3 && phone.length >= 3 && address.length >= 3 && pincode.length >= 3) {
+      setDisabled(false)
+    }
+    else {
+      setDisabled(true)
+    }
+ 
+  }, [name,email,phone,pincode,address])
 
   const handleChange = async (e) => {
 
@@ -63,16 +73,8 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
       setAddress(e.target.value)
     }
 
-    setTimeout(() => {
+  
 
-
-      if (name.length >= 3 && email.length >= 3 && phone.length >= 3 && address.length >= 3 && pincode.length >= 3) {
-        setDisabled(false)
-      }
-      else {
-        setDisabled(true)
-      }
-    }, 100);
   }
 
 
@@ -101,7 +103,10 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
       window.location.href = c
     }
     else {
-      clearCart()
+      if(txnRes.cartClear){
+
+        clearCart()
+      }
       toast.error(txnRes.error, {
         position: "bottom-left",
         autoClose: 5000,
@@ -204,7 +209,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <label htmlFor="email"
             className="leading-7 text-sm text-gray-600">Email</label>
 
-          {user && user.value? 
+          {user && user.token? 
             <input type="email"
             id="email"
             name="email"
