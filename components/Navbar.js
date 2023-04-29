@@ -1,16 +1,30 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef , useState} from 'react';
+import { useRef , useState,useEffect} from 'react';
 import { AiFillCloseCircle, AiOutlineMinusCircle, AiOutlinePlusCircle, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs'
+import { useRouter } from 'next/router';
 import { MdAccountCircle } from 'react-icons/md'
 
 const Navbar = ({logout,user, cart, addtoCart, removefromCart, clearCart, subTotal }) => {
 
    const [drodown, setDropdown] = useState(false)
+   const [sidebar, setSidebar] = useState(false)
+   const router = useRouter()
   // console.log(cart,addtoCart,removefromCart,clearCart,subTotal)
   // console.log(removefromCart)
+
+
+  useEffect(() => {
+    Object.keys(cart).length !==0 && setSidebar(true)
+    let exempted = ['/Checkout','/Order','/Orders','/myaccount','/']
+    if(exempted.includes(router.pathname))
+     {
+      setSidebar(false)
+     }
+  }, [])
+
   const toggleCart = () => {
     // if (ref.current.classList.contains('translate-x-full')){
     //   ref.current.classList.remove('translate-x-full')
@@ -22,20 +36,21 @@ const Navbar = ({logout,user, cart, addtoCart, removefromCart, clearCart, subTot
     //   ref.current.classList.add('translate-x-full')
     //   ref.current.classList.add('block')
     // }
-    if (ref.current.classList.contains('hidden')) {
-      ref.current.classList.remove('hidden')
-      ref.current.classList.add('block')
-    }
-    else if (!ref.current.classList.contains('hidden')) {
-      ref.current.classList.remove('block')
-      ref.current.classList.add('hidden')
-    }
+    // if (ref.current.classList.contains('hidden')) {
+    //   ref.current.classList.remove('hidden')
+    //   ref.current.classList.add('block')
+    // }
+    // else if (!ref.current.classList.contains('hidden')) {
+    //   ref.current.classList.remove('block')
+    //   ref.current.classList.add('hidden')
+    // }
+    setSidebar(!sidebar)
   }
 
 
   const ref = useRef();
   return (
-    <div className='flex flex-col justify-center items-center md:flex-row md:justify-start  shadow-md sticky top-0 bg-white z-10'>
+    <div className={`flex flex-col justify-center items-center md:flex-row md:justify-start  shadow-md sticky top-0 bg-white z-10 `}>
       <Link href={'/'}>
         <div className="logo mr-auto md:mx-5">
           <Image src="/logo.jpg" alt="" height={30} width={70} priority />
@@ -69,7 +84,7 @@ const Navbar = ({logout,user, cart, addtoCart, removefromCart, clearCart, subTot
       
 
 
-      <div ref={ref} className={`slideCart w-56 overflow-y-scroll sm:w-80 h-[100vh] ${Object.keys(cart).length === 0 ? 'hidden' : 'block'} absolute top-0 right-0 bg-pink-100 p-10 z-10 `}>
+      <div ref={ref} className={`slideCart w-72 overflow-y-scroll  h-[100vh] ${sidebar? 'block' : 'hidden'} absolute top-0 right-0 transition-all bg-pink-100 p-10 z-10 `}>
         <h2 className='text-center mb-2 font-bold'> Shopping Cart</h2>
         <span onClick={toggleCart} className='absolute top-5 right-2 cursor-pointer text-2xl text-pink-500'><AiFillCloseCircle /></span>
         <ol className='list-decimal font-semibold'>

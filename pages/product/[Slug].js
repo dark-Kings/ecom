@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 import Product from '../../models/Product'
@@ -12,6 +12,13 @@ const Slug = ({ addtoCart, product, variants, buyNow }) => {
   const [pin, setPin] = useState()
   const [service, setService] = useState()
 
+  const [color, setColor] = useState(product.color)
+  const [size, setSize] = useState(product.size)
+
+   useEffect(() => {
+     setColor(product.color)
+     setSize(product.size)
+   }, [router.query])
 
 
   const checkServiceability = async () => {
@@ -49,14 +56,14 @@ const Slug = ({ addtoCart, product, variants, buyNow }) => {
     setPin(e.target.value)
   }
 
-  const [color, setColor] = useState(product.color)
-  const [size, setSize] = useState(product.size)
+
 
 
 
   const refreshVariant = (newsize, newcolor) => {
     let url = `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newcolor][newsize]['Slug']}`
-    window.location = url;
+    // window.location = url;
+    router.push(url)
   }
 
 

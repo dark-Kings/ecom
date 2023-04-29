@@ -239,6 +239,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <input type="text"
             id="phone"
             name="phone"
+            placeholder='10 Digit - Phone Number'
             onChange={handleChange}
             value={phone}
             className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -268,7 +269,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
         </div>
         <div className="px-2 w-1/2">
           <label htmlFor="city"
-            className="leading-7 text-sm text-gray-600">City</label>
+            className="leading-7 text-sm text-gray-600">District</label>
           <input type="text"
             id="city"
             name="city"
