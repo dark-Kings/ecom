@@ -6,6 +6,8 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
 const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
   const [name, setName] = useState('')
@@ -19,10 +21,11 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   const [user, setUser] = useState({value:null})
 
   useEffect(()=>{
-    const user= JSON.parse(localStorage.getItem("myuser"))
-    if(user && user.token){
-         setUser(user)
-         setEmail(user.email)
+    const myuser= JSON.parse(localStorage.getItem("myuser"))
+    if(myuser && myuser.token){
+         setUser(myuser)
+         setEmail(myuser.email)
+         fetchData(myuser.token)
    }
   },[])
 
@@ -37,6 +40,40 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     }
  
   }, [name,email,phone,pincode,address])
+
+
+  const fetchData = async (token) => {
+    let data = { token: token }
+    const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+
+    let res = await a.json();
+    setName(res.name)
+    setAddress(res.address)
+    setPincode(res.pincode)
+    setPhone(res.phone)
+    getpincode(res.pincode)
+  }
+
+  const getpincode= async(pin)=>{
+    let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
+    let pinJson = await pins.json()
+    if (Object.keys(pinJson).includes(pin)) {
+      setState(pinJson[pin][1])
+      setCity(pinJson[pin][0])
+    }
+    else {
+      setCity('')
+      setState('')
+    }
+  }
+
+
 
   const handleChange = async (e) => {
 
@@ -53,16 +90,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     else if (e.target.name == 'pincode') {
       setPincode(e.target.value)
       if (e.target.value.length == 6) {
-        let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
-        let pinJson = await pins.json()
-        if (Object.keys(pinJson).includes(e.target.value)) {
-          setState(pinJson[e.target.value][1])
-          setCity(pinJson[e.target.value][0])
-        }
-        else {
-          setCity('')
-          setState('')
-        }
+         getpincode(e.target.value)
       }
       else {
         setCity('')
@@ -72,9 +100,6 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     else if (e.target.name == 'address') {
       setAddress(e.target.value)
     }
-
-  
-
   }
 
 
@@ -84,7 +109,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
     // Get a transaction token
 
-    const data = { cart, subTotal, Oid, email, name, address, pincode, phone }
+    const data = { cart, subTotal, Oid, email, name, address, pincode, phone,state,city }
     const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
       method: 'POST',
       headers: {
@@ -307,7 +332,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link> */}
 
 
-        <Link href={''}>  <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link>
+          <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
       </div>
     </div>
   )

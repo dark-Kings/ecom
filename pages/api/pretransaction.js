@@ -62,8 +62,13 @@ const handler = async (req, res) => {
         
         let order = new Order({
            email:req.body.email,
+           name:req.body.name,
            orderId:req.body.Oid,
            address:req.body.address,
+           city:req.body.city,
+           state:req.body.state,
+           pincode:req.body.pincode,
+           phone:req.body.phone,
            amount:req.body.subTotal,
            products:req.body.cart
        })
