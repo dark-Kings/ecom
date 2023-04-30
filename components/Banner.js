@@ -46,7 +46,7 @@ const Banner = () => {
                           modi impedit sequi.
                         </p>
                         <div className={styles['btn-box']}>
-                          <a href="" className={styles.btn1}>
+                        <a href={'/AllProducts'} className={styles.btn1}>
                             Shop Now
                           </a>
                         </div>
