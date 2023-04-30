@@ -19,6 +19,7 @@ const Forgot = () => {
     <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
+            {router.query.token}
             <img
               className="mx-auto h-20 w-auto"
               src="/logo.jpg"
