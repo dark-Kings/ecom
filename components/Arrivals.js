@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Mystyle.module.css";
+import Link from "next/link";
 
 const Arrivals = () => {
   return (
@@ -11,7 +12,7 @@ const Arrivals = () => {
               <div
                 className={`${styles.heading_container} ${styles.remove_line_bt}`}
               >
-                <h2>#NewArrivals</h2>
+                <h2 className="">#NewArrivals</h2>
               </div>
               <p
                 style={{
@@ -25,7 +26,7 @@ const Arrivals = () => {
                 Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem similique
                 ex unde!
               </p>
-              <a href={"/AllProducts"}>Shop Now</a>
+              <Link legacyBehavior href={'/AllProducts'}>Shop Now</Link>
             </div>
 
             <div className={styles.arrival_bg_box}>

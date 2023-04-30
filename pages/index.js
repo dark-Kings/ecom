@@ -23,12 +23,12 @@ export default function Home({products}) {
       <Arrivals />
 
       
-          <div className="allproduct_container pb-10">
+          <div id="productssssss" className="allproduct_container pb-10">
         <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products</h2>
         <section className="text-gray-600 body-font">
           <div>
             {/* <div className="container px-5 py-24 mx-auto"> */}
-            <div className="flex flex-wrap -m-4 justify-center items-center">
+            <div className="flex flex-wrap m-4 justify-center items-center">
               {Object.keys(products).length === 0 && (
                 <p className="font-semibold">
                   Sorry all the products are currently out of stock. New stock

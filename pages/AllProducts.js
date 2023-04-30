@@ -1,4 +1,3 @@
-import Head from "next/head";
 // import Banner from "../components/Banner";
 // import Whyus from "../components/Whyus";
 // import Arrivals from "../components/Arrivals";
@@ -14,11 +13,11 @@ export default function Home({ products }) {
   return (
     <div>
       <div className="allproduct_container pb-10">
-        <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">All Products</h2>
+        <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products</h2>
         <section className="text-gray-600 body-font">
           <div>
             {/* <div className="container px-5 py-24 mx-auto"> */}
-            <div className="flex flex-wrap -m-4 justify-center items-center">
+            <div className="flex flex-wrap -m-4 justify-center items-center m-5">
               {Object.keys(products).length === 0 && (
                 <p className="font-semibold">
                   Sorry all the products are currently out of stock. New stock
@@ -115,20 +114,27 @@ export async function getServerSideProps(context) {
   }
   let products = await Product.find();
   let AllProducts = {};
-  for (let item of products) {
-    if (item.title in AllProducts) {
-      if (!AllProducts[item.title].color.includes(item.color)) {
-        AllProducts[item.title].color.push(item.color);
-        AllProducts[item.title].size.push(item.size);
+  for(let item of products){
+    if(item.title in AllProducts){
+      if(!AllProducts[item.title].color.includes(item.color) && item.availableQty>0){
+       AllProducts[item.title].color.push(item.color);
       }
-    } else {
-      AllProducts[item.title] = JSON.parse(JSON.stringify(item));
-      if (item.availableQty > 0) {
-        AllProducts[item.title].color = [item.color];
-        AllProducts[item.title].size = [item.size];
+     if(!AllProducts[item.title].size.includes(item.size) && item.availableQty>0){ 
+       AllProducts[item.title].size.push(item.size);
       }
     }
-  }
+    else{
+     AllProducts[item.title]=JSON.parse(JSON.stringify(item))
+     if(item.availableQty>0){
+       AllProducts[item.title].color = [item.color]
+       AllProducts[item.title].size=[item.size]
+     }
+     else{
+       AllProducts[item.title].color = []
+       AllProducts[item.title].size=[]
+     }
+    }
+ }
   return {
     props: { products: JSON.parse(JSON.stringify(AllProducts)) }, // will be passed to the page component as props
   };
