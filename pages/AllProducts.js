@@ -1,23 +1,21 @@
-// import Banner from "../components/Banner";
-// import Whyus from "../components/Whyus";
-// import Arrivals from "../components/Arrivals";
-// import Subscribe from "../components/Subscribe";
-// import Testimonial from "../components/Testimonial";
-// import TempProduct from "../components/TempProduct";
 import React from "react";
 import Link from "next/link";
 import Product from "../models/Product";
 import mongoose from "mongoose";
+import Head from "next/head";
 
 export default function Home({ products }) {
   return (
     <div>
+           <Head>
+        <title>Products -codeswear.com</title>
+        </Head>
       <div className="allproduct_container pb-10">
         <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products</h2>
-        <section className="text-gray-600 body-font">
+        <section className="min-h-screen  text-gray-600 body-font">
           <div>
             {/* <div className="container px-5 py-24 mx-auto"> */}
-            <div className="flex flex-wrap -m-4 justify-center items-center m-5">
+            <div className="flex flex-wrap  justify-center items-center m-5">
               {Object.keys(products).length === 0 && (
                 <p className="font-semibold">
                   Sorry all the products are currently out of stock. New stock

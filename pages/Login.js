@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import {AiOutlineLock } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from 'next/head';
 
 const Login = () => {
 
@@ -86,7 +87,10 @@ const Login = () => {
         pauseOnHover
         theme="light"
       />
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8">
+    <Head>
+        <title>Login -codeswear.com</title>
+        </Head>
         <div className="w-full max-w-md space-y-8">
           <div>
             <img

@@ -18,7 +18,7 @@ const Navbar = ({logout,user, cart, addtoCart, removefromCart, clearCart, subTot
 
   useEffect(() => {
     Object.keys(cart).length !==0 && setSidebar(true)
-    let exempted = ['/Checkout','/Order','/Orders','/myaccount','/']
+    let exempted = ['/Checkout','/Order','/Orders','/myaccount','/','/About','/Contact']
     if(exempted.includes(router.pathname))
      {
       setSidebar(false)

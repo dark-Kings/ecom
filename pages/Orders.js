@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Orders = () => {
   const router = useRouter();
@@ -30,6 +31,9 @@ const Orders = () => {
   }, [router.query])
   return (
     <div className='min-h-screen'>
+        <Head>
+        <title>Orders -codeswear.com</title>
+        </Head>
       <h1 className='font-semibold text-center text-2xl p-8'>My Orders</h1>
       <div className="container  mx-auto">
         <div className="flex flex-col">

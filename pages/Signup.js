@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import  { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Signup = () => {
    const  router = useRouter();
@@ -73,7 +74,10 @@ const Signup = () => {
         pauseOnHover
         theme="light"
       />
-      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8">
+      <Head>
+        <title>Signup -codeswear.com</title>
+        </Head>
         <div className="w-full max-w-md space-y-8">
           <div>
             <img

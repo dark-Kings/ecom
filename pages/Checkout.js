@@ -210,12 +210,13 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
       />
 
       <Head>
+        <title>Checkout -codeswear.com</title>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 
         <Script type='application/javascript' crossOrigin='anonymous' src={`${process
           .env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} />
+          </Head>
 
-      </Head>
 
 
       <h1 className='text-3xl font-bold my-8 text-center'>Checkout</h1>

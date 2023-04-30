@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {AiOutlineLock } from 'react-icons/ai';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const Forgot = () => {
@@ -12,7 +13,10 @@ const Forgot = () => {
    }, [])
   return (
     <>
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <Head>
+        <title>Forget -codeswear.com</title>
+        </Head>
+    <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
@@ -24,7 +28,7 @@ const Forgot = () => {
               Forgot Password
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              Or{' '}
+    
               <Link href="/Login" className="font-medium text-pink-600 hover:text-pink-500">
                 Login
               </Link>

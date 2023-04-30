@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from 'next/head';
 
 
 
@@ -157,6 +158,9 @@ const myaccount = () => {
 
   return (
     <div className='constainer m-8'>
+        <Head>
+        <title>Myaccounts -codeswear.com</title>
+        </Head>
         <ToastContainer
         position="top-left"
         autoClose={5000}

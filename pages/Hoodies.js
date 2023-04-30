@@ -2,12 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import Product from '../models/Product'
 import mongoose from 'mongoose';
-
+import Head from 'next/head';
 
 const Hoodies = ({products}) => {
   return (
     <div>
-      <section className="text-gray-600 body-font">
+        <Head>
+        <title>Hoodies -codeswear.com</title>
+        </Head>
+      <section className="min-h-screen text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center items-center">
             {Object.keys(products).length===0 && <p className='font-semibold'>Sorry all the Hoodies are currently out of stock. New stock coming soon, Stay Tuned!</p>}
