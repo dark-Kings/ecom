@@ -88,7 +88,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-gray-100">
+                <div className="bg-black">
                     <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
                         <p className="text-gray-500 text-sm text-center sm:text-left">© 2023 CodesWear.com - All Rights Reserved - Anshul & Deepak
                         </p>
