@@ -174,7 +174,7 @@ const myaccount = () => {
         theme="light"
       />
       <h1 className='text-2xl text-center font-bold'>Update your Account</h1>
-      <h2 className='text-xl mx-auto font-semibold mb-4'>1. Delivery Details.</h2>
+      <h2 className='text-xl mx-auto font-semibold mb-4'>1. Customer Details.</h2>
       <div className="mx-auto flex">
         <div className="px-2 w-1/2">
           <label htmlFor="name"
