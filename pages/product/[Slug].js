@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Product from '../../models/Product'
 import mongoose from 'mongoose';
 import Error from 'next/error';
+import Head from 'next/head';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -75,8 +76,10 @@ const Slug = ({ addtoCart, product, variants, buyNow, error }) => {
     return <Error statusCode={404}/>
    }
   return <div>
-    <section className="text-gray-600 body-font overflow-hidden">
-
+    <section className="min-h-screen text-gray-600 body-font overflow-hidden">
+    <Head>
+        <title>Details -codeswear.com</title>
+        </Head>
       <ToastContainer
         position="bottom-center"
         autoClose={1000}

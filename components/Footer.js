@@ -14,12 +14,12 @@ const Footer = () => {
                             <span className="ml-3 text-xl">codesWear</span>
                         </a>
                         </Link>
-                        <p className="mt-2 mx-8 text-sm text-gray-500">Wear the &lt;Code/&gt; </p>
+                        <p className="mt-2 mx-8 text-sm font-semibold  text-gray-500">Wear the &lt;Code/&gt; </p>
                         <p className="mt-1 mx-8 text-sm text-gray-500">Preminum coding tshirts, hoodies and apparals</p>
                     </div>
                     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Shop</h2>
+                            <Link href={'/AllProducts'} className="title-font font-semibold  text-gray-900 tracking-widest text-sm mb-3">Shop</Link>
                             <nav className="list-none mb-10">
                                 <li>
                                    <Link href={'/Tshirts'} className="text-gray-600 hover:text-gray-800">Tshirts</Link>
@@ -36,7 +36,7 @@ const Footer = () => {
                             </nav>
                         </div>
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Contact</h2>
+                            <Link href={'/Contact'} className="title-font font-semibold  text-gray-900 tracking-widest text-sm mb-3">Contact</Link>
                             <nav className="list-none mb-10">
                                 <li>
                                     <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -53,7 +53,7 @@ const Footer = () => {
                             </nav>
                         </div>
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Policy</h2>
+                            <h2 className="font-semibold  title-font ftext-gray-900 tracking-widest text-sm mb-3">Policy</h2>
                             <nav className="list-none mb-10">
                                 <li>
                                     <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -70,7 +70,7 @@ const Footer = () => {
                             </nav>
                         </div>
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">About</h2>
+                            <Link href={'/About'} className="font-semibold title-font  text-gray-900 tracking-widest text-sm mb-4">About</Link>
                             <nav className="list-none mb-10">
                                 <li>
                                     <a className="text-gray-600 hover:text-gray-800">First Link</a>
