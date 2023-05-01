@@ -1,18 +1,21 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Product from '../models/Product'
 import mongoose from 'mongoose';
 
-import { useRouter } from 'next/router'
-const router = useRouter();
-const setsearchprod = router.query;
+
 
 
 export default function Home({products}) {
+  
+  const router = useRouter()
+  let searchvalue=router.query.q;
+  
   return (
 
     <div id="productssssss" className="allproduct_container pb-10">
-        <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products setsearchprod</h2>
+        <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products search : {searchvalue}</h2>
         <section className="text-gray-600 body-font">
           <div>
             {/* <div className="container px-5 py-24 mx-auto"> */}
@@ -23,6 +26,7 @@ export default function Home({products}) {
                   coming soon, Stay Tuned!
                 </p>
               )}
+              
               {Object.keys(products).map((item) => {
                 return (
                   <Link
@@ -110,7 +114,9 @@ export async function getServerSideProps(context) {
    
   mongoose.connect(process.env.MONGO_URI)
   }
-  let products = await Product.find()
+
+  const regex = new RegExp(context.query.q, 'i')
+  let products = await Product.find({ slug: { $regex: regex } })
   let AllProducts = {}
   for(let item of products){
      if(item.title in AllProducts){
