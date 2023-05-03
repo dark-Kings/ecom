@@ -119,7 +119,7 @@ const [roll, setRoll] = useState(0)
    
       <div className={`hidden ${styles.dekstopUser}`}>
  
-        <div className="relative right-16">
+        <div className="relative right-[80px]">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
@@ -150,7 +150,7 @@ const [roll, setRoll] = useState(0)
             {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2' />}
           </span>
           {!user.value && <Link href='/Login'>
-            <button className='bg-pink-500 px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
+            <button className='bg-pink-500 w-[45px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
           </Link>}
           <AiOutlineShoppingCart onClick={toggleCart} className='text-xl md:text-3xl' />
         </div>
