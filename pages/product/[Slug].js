@@ -76,7 +76,7 @@ const Slug = ({ addtoCart, product, variants, buyNow, error }) => {
     return <Error statusCode={404}/>
    }
   return <div>
-    <section className="min-h-screen text-gray-600 body-font overflow-hidden">
+    <section className="min-h-screen text-gray-600 body-font overflow-hidden py-8">
     <Head>
         <title>Details -codeswear.com</title>
         </Head>

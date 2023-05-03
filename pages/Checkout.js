@@ -121,7 +121,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     let txnRes = await a.json();
     let c = txnRes.b
     // console.log(c)
-    console.log(txnRes)
+    // console.log(txnRes)
 
     //self code to make entire simulation
     if (typeof window !== "undefined" && txnRes.success == true) {

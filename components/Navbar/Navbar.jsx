@@ -24,11 +24,42 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
 
   useEffect(() => {
     Object.keys(cart).length !== 0 && setSidebar(true)
-    let exempted = ['/Checkout', '/Order', '/Orders', '/myaccount', '/', '/About', '/Contact', '/Login', '/Signup', '/Forgot']
+    let exempted = ['/admin/AddProduct','/admin/UpdateProduct','/admin','/Checkout', '/Order', '/Orders', '/myaccount', '/', '/About', '/Contact', '/Login', '/Signup', '/Forgot']
     if (exempted.includes(router.pathname)) {
       setSidebar(false)
     }
   }, [])
+
+
+
+  const [Fuser, setFuser] = useState({ value: null })
+const [roll, setRoll] = useState(0)
+
+  useEffect(() => {
+    const myuser = JSON.parse(localStorage.getItem("myuser"))
+
+    if (myuser && myuser.token) {
+      setFuser(myuser)
+      fetchData(myuser.token)
+    }
+  }, [router.query])
+
+
+  const fetchData = async (token) => {
+    let data = { token: token }
+    const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+
+    let res = await a.json();
+   setRoll(res.__v)
+    
+  }
+
 
   const toggleCart = () => {
     // if (ref.current.classList.contains('translate-x-full')){
@@ -87,7 +118,7 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
    
       <div className={`hidden ${styles.dekstopUser}`}>
  
-        <div className="relative right-20">
+        <div className="relative right-16">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
@@ -110,6 +141,7 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
             {drodown && <div onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} className="absolute right-7 top-5 bg-white shadow-lg border rounded-md px-5 py-3 w-32">
               <ul>
                 <a href={'/myaccount'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>My Account</li></a>
+                 {roll==1 && <a href={'/admin'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Admin Dashboard</li></a>}
                 <a href={'/Orders'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Orders</li></a>
                 <li onClick={logout} className='py-1 text-sm  hover:text-pink-700 font-bold '>Logout</li>
               </ul>
@@ -149,6 +181,7 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
               {drodown && <div onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} className="absolute right-7 top-5 bg-white shadow-lg border rounded-md px-5 py-3 w-32">
                 <ul>
                   <a href={'/myaccount'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>My Account</li></a>
+                 {roll==1 && <a href={'/admin'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Admin Dashboard</li></a>}
                   <a href={'/Orders'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Orders</li></a>
                   <li onClick={logout} className='py-1 text-sm  hover:text-pink-700 font-bold '>Logout</li>
                 </ul>

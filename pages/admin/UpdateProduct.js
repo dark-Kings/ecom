@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import { useRouter } from 'next/router'
 import Dashboard from './Dashboard'
 
-const index = () => {
+const UpdateProduct = () => {
   const [user, setUser] = useState({ value: null })
   const [roll, setRoll] = useState(0)
 
@@ -37,18 +37,17 @@ const index = () => {
     }
  
   }
-
   return (
     <div  className='flex min-h-screen'>
-    <div className='bg-yellow-300 min-h-screen w-1/4 pt-24 flex flex-col'>
-    <Dashboard/> 
+         <div className='bg-yellow-300 min-h-screen w-1/4 pt-24 flex flex-col'>
+         <Dashboard/> 
+         </div>
+         <div className='bg-pink-300 min-h-screen w-3/4 pt-24 flex flex-col'>
+          update product
+        </div>
+      
     </div>
-    <div className='bg-pink-300 min-h-screen w-3/4 pt-24 flex flex-col'>
-      admin
-   </div>
-   </div>
-  
-    )
+  )
 }
 
-export default index
+export default UpdateProduct

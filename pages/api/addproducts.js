@@ -17,6 +17,7 @@ const handler = async (req, res) => {
         price: req.body[i].price,
         availableQty: req.body[i].availableQty,
       })
+  
       await P.save();
     }
     res.status(200).json({ "success": "success" })
