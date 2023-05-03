@@ -10,7 +10,7 @@ export default function Home({ products }) {
            <Head>
         <title>Products -codeswear.com</title>
         </Head>
-      <div className="allproduct_container pb-10">
+      <div className="allproduct_container p-8 pb-10">
         <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products</h2>
         <section className="min-h-screen  text-gray-600 body-font">
           <div>

@@ -30,7 +30,7 @@ const Orders = () => {
 
   }, [router.query])
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen p-12'>
         <Head>
         <title>Orders -codeswear.com</title>
         </Head>

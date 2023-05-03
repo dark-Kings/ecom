@@ -19,7 +19,7 @@ const Order = ({order,clearCart}) => {
   // console.log(order.orderId)
  
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
+    <section className="text-gray-600 body-font overflow-hidden p-12">
      <Head>
         <title>Order -codeswear.com</title>
         </Head>
