@@ -56,7 +56,8 @@ const [roll, setRoll] = useState(0)
     })
 
     let res = await a.json();
-   setRoll(res.__v)
+   setRoll(res.Uroll)
+   
     
   }
 

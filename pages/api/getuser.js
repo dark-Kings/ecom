@@ -9,8 +9,8 @@ const handler = async (req, res) => {
     let user = jsonwebtoken.verify(jwt,process.env.NEXT_PUBLIC_JWT_SECRET)
     let dbuser = await User.findOne({email:user.email})
     // console.log(dbuser)
-    const {name,email,address,pincode,phone,__v}=dbuser
-    res.status(200).json({ name,email,address,pincode,phone,__v})
+    const {name,email,address,pincode,phone,Uroll}=dbuser
+    res.status(200).json({ name,email,address,pincode,phone,Uroll})
 
    
 }else{

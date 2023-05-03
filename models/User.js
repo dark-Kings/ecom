@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
     address:{type:String, default:''},
     pincode:{type:String, default:''},
     phone:{type:String, default:''},
-   Uroll:{typeof:Number,default:0}
+   Uroll:{type:Number,default:0}
 },{timestamps: true});
 
 mongoose.models = {}

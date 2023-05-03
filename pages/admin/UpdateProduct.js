@@ -32,7 +32,7 @@ const UpdateProduct = () => {
 
     let res = await a.json();
     setRoll(res.__v)
-    if(res.__v !=1){
+    if(res.Uroll !=1){
       router.push('/')
     }
  
