@@ -10456,3 +10456,26 @@ a:focus {
     margin-left: auto !important;
     z-index: 9;
 }
+
+
+
+/*  */
+/* About Us */
+/*  */
+.about_bg_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.about_bg_box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top right;
+     object-position: top right;
+}

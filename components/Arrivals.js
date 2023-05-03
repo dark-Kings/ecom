@@ -26,7 +26,7 @@ const Arrivals = () => {
                 Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem similique
                 ex unde!
               </p>
-              <Link legacyBehavior href={'/AllProducts'}>Shop Now</Link>
+              <Link legacyBehavior href="#productssssss">Shop Now</Link>
             </div>
 
             <div className={styles.arrival_bg_box}>

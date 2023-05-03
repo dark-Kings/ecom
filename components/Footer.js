@@ -36,19 +36,19 @@ const Footer = () => {
                             </nav>
                         </div>
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <Link href={'/Contact'} className="title-font font-semibold  text-gray-900 tracking-widest text-sm mb-3">Contact</Link>
+                            <Link href={'/Contact'} className="title-font font-semibold  text-gray-900 tracking-widest text-sm mb-3">Useful Links</Link>
                             <nav className="list-none mb-10">
                                 <li>
-                                    <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                                    <a href={'/About'} className="text-gray-600 hover:text-gray-800">About Us</a>
                                 </li>
                                 <li>
-                                    <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                                    <a href={'/Contact'} className="text-gray-600 hover:text-gray-800">Contact</a>
                                 </li>
                                 <li>
-                                    <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                                    <a className="text-gray-600 hover:text-gray-800">Shipping Rate</a>
                                 </li>
                                 <li>
-                                    <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                                    <a className="text-gray-600 hover:text-gray-800">Help</a>
                                 </li>
                             </nav>
                         </div>
