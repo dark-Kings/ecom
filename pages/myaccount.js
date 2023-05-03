@@ -157,7 +157,7 @@ const myaccount = () => {
 
 
   return (
-    <div className='constainer m-8'>
+    <div className='constainer m-8 p-24'>
         <Head>
         <title>Myaccounts -codeswear.com</title>
         </Head>

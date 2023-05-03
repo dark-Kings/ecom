@@ -15,10 +15,12 @@
     "emailjs": "^4.0.1",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
+    "framer-motion": "^10.12.7",
     "heroicons-react": "^1.4.1",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.0",
     "next": "^13.0.5",
+    "node-sass": "^7.0.3",
     "paytmchecksum": "^1.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -28,6 +30,7 @@
     "react-router-dom": "^6.10.0",
     "react-toastify": "^9.1.1",
     "react-top-loading-bar": "^2.3.1",
+    "sass": "^1.62.1",
     "stripe": "^12.2.0"
   },
   "devDependencies": {

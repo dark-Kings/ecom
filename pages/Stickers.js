@@ -11,6 +11,8 @@ const Stickers = ({products}) => {
         <Head>
         <title>Stickers -codeswear.com</title>
         </Head>
+        <div className="allproduct_container p-8 pb-10">
+        <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Stickers</h2>
       <section className="min-h-screen text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center items-center">
@@ -51,6 +53,7 @@ const Stickers = ({products}) => {
           </div>
         </div>
       </section>
+    </div>
     </div>
   )
 }

@@ -121,7 +121,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     let txnRes = await a.json();
     let c = txnRes.b
     // console.log(c)
-    console.log(txnRes)
+    // console.log(txnRes)
 
     //self code to make entire simulation
     if (typeof window !== "undefined" && txnRes.success == true) {
@@ -195,7 +195,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   }
 
   return (
-    <div className='container m-auto'>
+    <div className='container m-auto p-12'>
       <ToastContainer
         position="top-left"
         autoClose={5000}
