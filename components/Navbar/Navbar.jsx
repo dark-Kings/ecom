@@ -24,7 +24,7 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
 
   useEffect(() => {
     Object.keys(cart).length !== 0 && setSidebar(true)
-    let exempted = ['/admin/AddProduct','/admin/UpdateProduct','/admin','/Checkout', '/Order', '/Orders', '/myaccount', '/', '/About', '/Contact', '/Login', '/Signup', '/Forgot']
+    let exempted = ['/admin/AddProduct','/admin/Products','/admin/Product/UpdateProduct','/admin','/Checkout', '/Order', '/Orders', '/myaccount', '/', '/About', '/Contact', '/Login', '/Signup', '/Forgot']
     if (exempted.includes(router.pathname)) {
       setSidebar(false)
     }
@@ -150,7 +150,7 @@ const [roll, setRoll] = useState(0)
             {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2' />}
           </span>
           {!user.value && <Link href='/Login'>
-            <button className='bg-pink-500 w-[45px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
+            <button className='bg-pink-500 w-[50px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
           </Link>}
           <AiOutlineShoppingCart onClick={toggleCart} className='text-xl md:text-3xl' />
         </div>

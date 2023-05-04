@@ -119,7 +119,7 @@ const AddProduct = () => {
         setImg('')
       }
       else{
-        toast.error(txnRes.error, {
+        toast.error(res.error, {
           position: "bottom-left",
           autoClose: 5000,
           hideProgressBar: false,
@@ -233,7 +233,7 @@ const AddProduct = () => {
             </div>
           </div>
           <div className="mx-auto flex">
-            <div className="px-2 w-1/2 text-center">
+            <div className="px-2 w-1/2 ">
               <label htmlFor="availableQty"
                 className="leading-7 text-sm text-gray-600 ">Available Qantity</label>
               <input type="text"

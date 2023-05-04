@@ -10,7 +10,7 @@ const Footer = () => {
                     <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
                     <Link legacyBehavior href={'/'}>
                         <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                            <Image src="/logo.jpg" alt='' width={100} height={20} priority/>
+                        <Image src="/logo.jpg" alt="" height={30} width={70} priority />
                             <span className="ml-3 text-xl">codesWear</span>
                         </a>
                         </Link>

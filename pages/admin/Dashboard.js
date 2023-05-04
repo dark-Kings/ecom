@@ -22,8 +22,8 @@ const Dashboard = () => {
         <div className=' text-xl m-2 p-3'>Add new Product</div>
         </Link>
 
-        <Link href={'/admin/UpdateProduct'}>
-        <div className=' text-xl m-2 p-3'>Update Product</div>
+        <Link href={'/admin/Products'}>
+        <div className=' text-xl m-2 p-3'>Product</div>
         </Link>
 
      
