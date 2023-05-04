@@ -60,7 +60,7 @@ const Subscribe = () => {
                   <div className={`${styles['col-md-6']} ${styles['offset-md-3']}`}>
                      <div className={styles.subscribe_form}>
                         <div className={`${styles.heading_container} ${styles['heading_center']}`}>
-                           <h2 className="heading_containerh2">Subscribe To Get <span>Discount Offers</span></h2>
+                           <h2 className="heading_containerh2">Subscribe To Get Discount <span>Offers</span></h2>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
                         <form onSubmit={handleSubmit} method="POST">

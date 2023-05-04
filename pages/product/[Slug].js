@@ -93,7 +93,7 @@ const Slug = ({ addtoCart, product, variants, buyNow, error }) => {
         theme="light"
       />
 
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-24 mx-auto bg-sky-50">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img alt="ecommerce" className="lg:w-1/2 sm:m-auto w-full sm:w-96  px-16 lg:h-auto  object-cover object-top rounded " src={product.img} />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -173,12 +173,12 @@ const Slug = ({ addtoCart, product, variants, buyNow, error }) => {
                   <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                 </svg>
               </button> */}
-              <button disabled={product.availableQty<=0} onClick={() => { buyNow(Slug, 1, product.price, `${product.title}(${product.size}/${product.color})`, product.size, product.color) }} className="disabled:bg-pink-300 flex  ml-auto  text-white bg-pink-500 border-0 text-sm py-2 px-[1px] md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
-              <button disabled={product.availableQty<=0} onClick={() => { addtoCart(Slug, 1, product.price, `${product.title}(${product.size}/${product.color})`, product.size, product.color) }} className="disabled:bg-pink-300 flex ml-2  text-white bg-pink-500 border-0 py-2 text-sm px-[1px] md:px-6 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
+              <button disabled={product.availableQty<=0} onClick={() => { buyNow(Slug, 1, product.price, `${product.title}(${product.size}/${product.color})`, product.size, product.color) }} className="disabled:bg-sky-300 flex  ml-auto  text-white bg-sky-500 border-0 text-sm py-2 px-[1px] md:px-6 focus:outline-none hover:bg-sky-600 rounded">Buy Now</button>
+              <button disabled={product.availableQty<=0} onClick={() => { addtoCart(Slug, 1, product.price, `${product.title}(${product.size}/${product.color})`, product.size, product.color) }} className="disabled:bg-sky-300 flex ml-2  text-white bg-sky-500 border-0 py-2 text-sm px-[1px] md:px-6 focus:outline-none hover:bg-sky-600 rounded">Add to Cart</button>
             </div> 
             <div className="pin mt-6 flex  text-sm ">
               <input onChange={onChangePin} placeholder="Enter your pincode" className='title-font w-2/3 px-1 lg:mr-5 ssm:w-56 font-medium ml-1 ssm:text-2xl text-gray-900 border-2 border-gray-300 rounded-md' type="text" />
-              <button onClick={checkServiceability} className='flex mt-2 w-1/3 ml-2  ssm:w-32 ssm:ml-auto text-white  bg-pink-500 border-0 py-2 px-6 ssm:px-8  focus:outline-none hover:bg-pink-600 rounded'> Check</button>
+              <button onClick={checkServiceability} className='flex mt-2 w-1/3 ml-2  ssm:w-32 ssm:ml-auto text-white  bg-sky-500 border-0 py-2 px-6 ssm:px-8  focus:outline-none hover:bg-sky-600 rounded'> Check</button>
             </div>
             {(!service && service != null) && <div className='text-red-700 text-sm mt-3'>
               Sorry! We do not deliver to this pincode yet

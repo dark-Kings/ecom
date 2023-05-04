@@ -185,13 +185,14 @@ const UpdateProduct = ({ product, variants, error }) => {
         pauseOnHover
         theme="light"
       />
-      <div className='bg-yellow-300 min-h-screen w-1/4 pt-24 flex flex-col'>
+      <div className='bg-sky-300 min-h-screen w-1/4 pt-24 flex flex-col'>
         <Dashboard />
       </div>
-      <div className=' min-h-screen w-3/4  flex flex-col my-5'>
+      <div className=' min-h-screen w-3/4  flex flex-col my-5 bg-sky-50'>
 
 
-        <div className="container px-5 py-24 mx-auto my-5">
+        <h1 className='text-3xl font-bold  text-center pt-20'>Current Product</h1>
+        <div className="container px-5 pt-10 mx-auto my-5">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img alt="ecommerce" className="lg:w-1/2 sm:m-auto w-full sm:w-96  px-16 lg:h-auto  object-cover object-top rounded " src={product.img} />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -230,9 +231,9 @@ const UpdateProduct = ({ product, variants, error }) => {
           </div>
         </div>
 
+     <hr />
 
-
-        <div className='container  '>
+        <div className='container  my-5'>
           <h1 className='text-3xl font-bold  text-center'>Update Product</h1>
           <h2 className='text-2xl mx-auto font-semibold mb-4 ml-2'>Details.</h2>
           <div className="mx-auto flex">
@@ -337,8 +338,8 @@ const UpdateProduct = ({ product, variants, error }) => {
           </div>
           <div className="mx-auto flex">
             <div className="p-3 w-full text-center">
-              <button onClick={handleUpdate} className='bg-pink-500 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Update Product</button>
-              <button onClick={handleDelete} className='bg-pink-500 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Delete Product</button>
+              <button onClick={handleUpdate} className='bg-sky-500 hover:bg-sky-600 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Update Product</button>
+              <button onClick={handleDelete} className='bg-sky-500 hover:bg-sky-600 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Delete Product</button>
 
             </div>
           </div>

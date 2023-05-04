@@ -19,7 +19,7 @@ export default function Home({products}) {
         <section className="text-gray-600 body-font">
           <div>
             {/* <div className="container px-5 py-24 mx-auto"> */}
-            <div className="flex flex-wrap m-4 justify-center items-center">
+            <div className="flex flex-wrap m-4 justify-center items-center bg-sky-50">
               {Object.keys(products).length === 0 && (
                 <p className="font-semibold">
                   Sorry all the products are currently out of stock. New stock

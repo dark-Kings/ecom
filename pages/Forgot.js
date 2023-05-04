@@ -181,7 +181,7 @@ const Forgot = () => {
         pauseOnHover
         theme="light"
       />
-    <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8 bg-sky-50">
         <div className="w-full max-w-md space-y-8">
           <div>
            
@@ -195,7 +195,7 @@ const Forgot = () => {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
     
-              <Link href="/Login" className="font-medium text-pink-600 hover:text-pink-500">
+              <Link href="/Login" className="font-medium text-sky-600 hover:text-pink-500">
                 Login
               </Link>
             </p>
@@ -242,10 +242,10 @@ const Forgot = () => {
              
                 onClick={resetPassword}
                 type="submit"
-                className="group relative my-4 flex w-full justify-center rounded-md border border-transparent bg-pink-600 py-2 px-4 text-sm font-medium text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                className="group relative my-4 flex w-full justify-center rounded-md border border-transparent bg-sky-600 py-2 px-4 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <AiOutlineLock className="h-5 w-5 text-pink-500 group-hover:text-pink-400"/>
+                  <AiOutlineLock className="h-5 w-5 text-white group-hover:text-pink-400"/>
                 </span>
                 Change Password
               </button>
@@ -280,10 +280,10 @@ const Forgot = () => {
               <button
               onClick={sendResetEmail}
                 type="submit"
-                className="group relative my-4 flex w-full justify-center rounded-md border border-transparent bg-pink-600 py-2 px-4 text-sm font-medium text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                className="group relative my-4 flex w-full justify-center rounded-md border border-transparent bg-sky-600 py-2 px-4 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <AiOutlineLock className="h-5 w-5 text-pink-500 group-hover:text-pink-400"/>
+                  <AiOutlineLock className="h-5 w-5 text-white group-hover:text-pink-400"/>
                 </span>
                 Change Password
               </button>

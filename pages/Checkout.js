@@ -195,7 +195,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   }
 
   return (
-    <div className='container m-auto p-12'>
+    <div className='container m-auto p-12 bg-sky-50'>
       <ToastContainer
         position="top-left"
         autoClose={5000}
@@ -313,7 +313,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
       <h2 className='text-xl mx-auto font-semibold mb-4 mt-4'>2. Review Cart Item</h2>
 
 
-      <div className="slideCart  h-full   bg-pink-100 p-10 z-10 ">
+      <div className="slideCart  h-full   bg-sky-100 p-10 z-10 ">
         <ol className='list-decimal font-semibold'>
           {Object.keys(cart).length === 0 && <div className='mt-4 font-semibold'>Your cart is Empty!</div>}
           {Object.keys(cart).map((k) => {
@@ -333,7 +333,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link> */}
 
 
-          <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
+          <button disabled={disabled} className='disabled:bg-sky-300 flex ml-2 mt-4 p-8 text-white bg-sky-500 border-0 py-2 focus:outline-none hover:bg-sky-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
       </div>
     </div>
   )

@@ -13,7 +13,7 @@ const About = () => {
 
 
       <header>
-      <div className={`${styles.slider_section} min-h-[800px]`}>
+      <div className={`${styles.slider_section} min-h-[800px] `}>
         <div className={styles.about_bg_box}>
           <img src="/images/about.png" alt="" />
         </div>
@@ -46,7 +46,7 @@ const About = () => {
             </div>
         </div>
       </div>
-      {/* </section> */}
+    
     </header>
   </>
   );

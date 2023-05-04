@@ -151,7 +151,7 @@ const [roll, setRoll] = useState(0)
             {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2' />}
           </span>
           {!user.value && <Link href='/Login'>
-            <button className='bg-pink-500 w-[50px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
+            <button className='bg-sky-500 w-[50px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
           </Link>}
           <AiOutlineShoppingCart onClick={toggleCart} className='text-xl md:text-3xl' />
         </div>
@@ -191,7 +191,7 @@ const [roll, setRoll] = useState(0)
               {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2' />}
             </span>
             {!user.value && <Link href='/Login'>
-              <button className='bg-pink-500 px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
+              <button className='bg-sky-500 px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
             </Link>}
             <AiOutlineShoppingCart onClick={()=>{toggleCart()
              setToggle(false) }} className='text-xl md:text-3xl' />
@@ -220,9 +220,9 @@ const [roll, setRoll] = useState(0)
         )}
       </div>
 
-      <div ref={ref} className={`slideCart w-72 overflow-y-scroll  h-[100vh] ${sidebar ? 'block' : 'hidden'} absolute top-0 right-0 transition-all bg-pink-100 p-10 z-10 `}>
+      <div ref={ref} className={`slideCart w-72 overflow-y-scroll  h-[100vh] ${sidebar ? 'block' : 'hidden'} absolute top-0 right-0 transition-all bg-sky-100 p-10 z-10 `}>
         <h2 className='text-center mb-2 font-bold'> Shopping Cart</h2>
-        <span onClick={toggleCart} className='absolute top-5 right-2 cursor-pointer text-2xl text-pink-500'><AiFillCloseCircle /></span>
+        <span onClick={toggleCart} className='absolute top-5 right-2 cursor-pointer text-2xl text-sky-500'><AiFillCloseCircle /></span>
         <ol className='list-decimal font-semibold'>
           {Object.keys(cart).length === 0 && <div className='mt-4 font-semibold'>Your cart is Empty!</div>}
           {Object.keys(cart).map((k) => {
@@ -238,10 +238,10 @@ const [roll, setRoll] = useState(0)
         <div className="font-bold my-4 mt-6">Subtotal : ₹ {subTotal}</div>
         <div className="flex space-x-2">
 
-          <Link href={'/Checkout'}>  <button disabled={Object.keys(cart).length == 0} className='disabled:bg-pink-300 flex  mt-8 p-4 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm'><BsFillBagCheckFill className='m-1 ' /> Checkout</button></Link>
+          <Link href={'/Checkout'}>  <button disabled={Object.keys(cart).length == 0} className='disabled:bg-sky-200 disabled:text-black flex  mt-8 p-4 text-white bg-sky-600 border-0 py-2 focus:outline-none hover:bg-sky-700 rounded text-sm'><BsFillBagCheckFill className='m-1 ' /> Checkout</button></Link>
 
 
-          <button disabled={Object.keys(cart).length == 0} onClick={clearCart} className='disabled:bg-pink-300 flex  mt-8 p-4 text-white bg-pink-500 border-0  py-2 focus:outline-none hover:bg-pink-700 rounded text-sm'> Clear Cart</button>
+          <button disabled={Object.keys(cart).length == 0} onClick={clearCart} className='disabled:bg-sky-200 disabled:text-black flex  mt-8 p-4 text-white bg-sky-600 border-0  py-2 focus:outline-none hover:bg-sky-700 rounded text-sm'> Clear Cart</button>
         </div>
       </div>
 

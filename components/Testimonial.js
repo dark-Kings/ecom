@@ -11,7 +11,7 @@ const Testimonial = () => {
         </div>
       </div>
       <section className="text-gray-400 bg-silver-900 body-font">
-      <div className="container px-5 py-24 mx-auto bg-slate-200">
+      <div className="container px-5 py-24 mx-auto bg-sky-50">
           <div className="flex flex-wrap -m-4">
             <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
               <div className="h-full text-center">
