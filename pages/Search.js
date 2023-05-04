@@ -14,7 +14,7 @@ export default function Home({products}) {
   
   return (
 
-    <div id="productssssss" className="allproduct_container pb-10">
+    <div id="productssssss" className="allproduct_container p-10">
         <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products search : {searchvalue}</h2>
         <section className="text-gray-600 body-font">
           <div>

@@ -39,7 +39,7 @@ const Customise = () => {
                       </h1>
                       <p>Print your own design on T shirt Design</p>
                       <div className={styles["btn-box"]}>
-                        <a href="#productssssss" className={styles.btn1}>
+                        <a href="http://127.0.0.1:5173/" target="black" className={styles.btn1}>
                           Shop Now
                         </a>
                       </div>
@@ -62,7 +62,7 @@ const Customise = () => {
                       </h1>
                       <p>Print your own customise design in clothes</p>
                       <div className={styles["btn-box"]}>
-                        <a href="" className={styles.btn1}>
+                        <a href="http://127.0.0.1:5173/" target="blank" className={styles.btn1}>
                           Try Now
                         </a>
                       </div>

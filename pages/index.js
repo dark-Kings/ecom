@@ -4,7 +4,6 @@ import Whyus from "../components/Whyus";
 import Arrivals from "../components/Arrivals";
 import Subscribe from "../components/Subscribe";
 import Testimonial from "../components/Testimonial";
-import TempProduct from "../components/TempProduct";
 import React from 'react'
 import Link from 'next/link'
 import Product from '../models/Product'
@@ -115,7 +114,7 @@ export default function Home({products}) {
           </div>
       </section>
     </div>
-      {/* <TempProduct /> */}
+ 
 
 
             
