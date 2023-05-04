@@ -9,6 +9,7 @@ import React from 'react'
 import Link from 'next/link'
 import Product from '../models/Product'
 import mongoose from 'mongoose';
+import Customise from "../components/Customise";
 
 export default function Home({products}) {
   return (
@@ -115,6 +116,10 @@ export default function Home({products}) {
       </section>
     </div>
       {/* <TempProduct /> */}
+
+
+            
+      <Customise/>
         <Testimonial />
       <Subscribe />
       
