@@ -147,10 +147,10 @@ const AddProduct = () => {
         pauseOnHover
         theme="light"
       />
-      <div className='bg-sky-300 min-h-screen w-1/4 pt-24 flex flex-col'>
+      <div className='bg-pink-300 min-h-screen w-1/4 pt-24 flex flex-col'>
         <Dashboard />
       </div>
-      <div className=' min-h-screen w-3/4  flex  bg-sky-50'>
+      <div className=' min-h-screen w-3/4  flex  bg-pink-50'>
         <div className='container  p-12'>
           <h1 className='text-3xl font-bold my-8 text-center'>Add Product</h1>
           <h2 className='text-2xl mx-auto font-semibold mb-4 ml-2'>Details.</h2>
@@ -256,7 +256,7 @@ const AddProduct = () => {
           </div>
           <div className="mx-auto flex">
             <div className="py-3 w-full text-center">
-              <button onClick={handleSubmit} className='bg-sky-500 hover:bg-sky-600  rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Add</button>
+              <button onClick={handleSubmit} className='bg-pink-500 hover:bg-pink-600  rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Add</button>
 
             </div>
           </div>

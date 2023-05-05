@@ -11263,7 +11263,7 @@ a:focus {
 } */
 
 .arrival_section {
-  background-color: #d4ced0;
+  background-color: rgb(253 242 248);
 }
 
 .arrival_section .heading_container {
@@ -11334,7 +11334,7 @@ a:focus {
 }
 
 .subscribe_section .box {
-  background-color: rgb(240 249 255);
+  background-color: rgb(253 242 248);
   padding: 75px 45px;
 }
 

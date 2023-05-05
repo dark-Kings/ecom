@@ -19,7 +19,7 @@ const Order = ({order,clearCart}) => {
   // console.log(order.orderId)
  
   return (
-    <section className="text-gray-600 body-font overflow-hidden p-12 bg-sky-50">
+    <section className="text-gray-600 body-font overflow-hidden p-12 bg-pink-50">
      <Head>
         <title>Order -codeswear.com</title>
         </Head>
@@ -51,7 +51,7 @@ const Order = ({order,clearCart}) => {
 
           <div className="flex">
             <span className="title-font font-medium text-2xl my-8 text-gray-900">SubTotal ₹ {order.amount}</span>
-            <button className="flex ml-auto text-white bg-sky-500 border-0 py-2 px-6 h-14 my-5 focus:outline-none hover:bg-sky-600 rounded">Track Order</button>
+            <button className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 h-14 my-5 focus:outline-none hover:bg-pink-600 rounded">Track Order</button>
           </div>
         </div>
         <img alt="ecommerce" className="lg:w-1/2 w-52 m-auto lg:h-auto  object-cover object-center rounded" src="/images/payment.png"/>

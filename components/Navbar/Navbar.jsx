@@ -130,10 +130,10 @@ const [roll, setRoll] = useState(0)
             name='q'
             value={query}
             onChange={handleParam(setQuery)}
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Searching..."
             required />
-          <button onClick={handleSubmit} className="text-white absolute right-2.5 bottom-2.5 bg-pink-500 hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+          <button onClick={handleSubmit} className="text-white absolute right-2.5 bottom-2.5  hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 bg-pink-600 dark:focus:ring-blue-800">Search</button>
         </div>
 
 
@@ -151,7 +151,7 @@ const [roll, setRoll] = useState(0)
             {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2' />}
           </span>
           {!user.value && <Link href='/Login'>
-            <button className='bg-sky-500 w-[50px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
+            <button className='bg-pink-500 w-[50px] px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
           </Link>}
           <AiOutlineShoppingCart onClick={toggleCart} className='text-xl md:text-3xl' />
         </div>
@@ -188,13 +188,13 @@ const [roll, setRoll] = useState(0)
                   <li onClick={logout} className='py-1 text-sm  hover:text-pink-700 font-bold '>Logout</li>
                 </ul>
               </div>}
-              {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2' />}
+              {user.value && <MdAccountCircle className='text-xl md:text-3xl mx-2 text-pink-600' />}
             </span>
             {!user.value && <Link href='/Login'>
-              <button className='bg-sky-500 px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
+              <button className='bg-pink-500 px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
             </Link>}
             <AiOutlineShoppingCart onClick={()=>{toggleCart()
-             setToggle(false) }} className='text-xl md:text-3xl' />
+             setToggle(false) }} className='text-xl md:text-3xl text-pink-600' />
 
 
         
@@ -209,7 +209,7 @@ const [roll, setRoll] = useState(0)
             className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Searching..."
             required />
-          <button onClick={handleSubmit} className="text-white absolute right-6 bottom-6 bg-pink-500 hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+          <button onClick={handleSubmit} className="text-white absolute right-6 bottom-6 bg-pink-500 hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  dark:focus:ring-blue-800">Search</button>
 
 
 
@@ -220,9 +220,9 @@ const [roll, setRoll] = useState(0)
         )}
       </div>
 
-      <div ref={ref} className={`slideCart w-72 overflow-y-scroll  h-[100vh] ${sidebar ? 'block' : 'hidden'} absolute top-0 right-0 transition-all bg-sky-100 p-10 z-10 `}>
+      <div ref={ref} className={`slideCart w-72 overflow-y-scroll  h-[100vh] ${sidebar ? 'block' : 'hidden'} absolute top-0 right-0 transition-all bg-pink-100 p-10 z-10 `}>
         <h2 className='text-center mb-2 font-bold'> Shopping Cart</h2>
-        <span onClick={toggleCart} className='absolute top-5 right-2 cursor-pointer text-2xl text-sky-500'><AiFillCloseCircle /></span>
+        <span onClick={toggleCart} className='absolute top-5 right-2 cursor-pointer text-2xl text-pink-500'><AiFillCloseCircle /></span>
         <ol className='list-decimal font-semibold'>
           {Object.keys(cart).length === 0 && <div className='mt-4 font-semibold'>Your cart is Empty!</div>}
           {Object.keys(cart).map((k) => {
@@ -238,10 +238,10 @@ const [roll, setRoll] = useState(0)
         <div className="font-bold my-4 mt-6">Subtotal : ₹ {subTotal}</div>
         <div className="flex space-x-2">
 
-          <Link href={'/Checkout'}>  <button disabled={Object.keys(cart).length == 0} className='disabled:bg-sky-200 disabled:text-black flex  mt-8 p-4 text-white bg-sky-600 border-0 py-2 focus:outline-none hover:bg-sky-700 rounded text-sm'><BsFillBagCheckFill className='m-1 ' /> Checkout</button></Link>
+          <Link href={'/Checkout'}>  <button disabled={Object.keys(cart).length == 0} className='disabled:bg-pink-200 disabled:text-black flex  mt-8 p-4 text-white bg-pink-600 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm'><BsFillBagCheckFill className='m-1 ' /> Checkout</button></Link>
 
 
-          <button disabled={Object.keys(cart).length == 0} onClick={clearCart} className='disabled:bg-sky-200 disabled:text-black flex  mt-8 p-4 text-white bg-sky-600 border-0  py-2 focus:outline-none hover:bg-sky-700 rounded text-sm'> Clear Cart</button>
+          <button disabled={Object.keys(cart).length == 0} onClick={clearCart} className='disabled:bg-pink-200 disabled:text-black flex  mt-8 p-4 text-white bg-pink-600 border-0  py-2 focus:outline-none hover:bg-pink-700 rounded text-sm'> Clear Cart</button>
         </div>
       </div>
 

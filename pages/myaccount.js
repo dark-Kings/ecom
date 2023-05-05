@@ -157,7 +157,7 @@ const myaccount = () => {
 
 
   return (
-    <div className='constainer  p-24 bg-sky-50'>
+    <div className='constainer  p-24 bg-pink-50'>
         <Head>
         <title>Myaccounts -codeswear.com</title>
         </Head>
@@ -240,7 +240,7 @@ const myaccount = () => {
             className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
         </div>
       </div>
-      <button onClick={handleUserSubmit} className='m-2 flex ml-2 mt-4 p-8 text-white bg-sky-500 border-0 py-2 focus:outline-none hover:bg-sky-700 rounded text-sm' >Update Details</button>
+      <button onClick={handleUserSubmit} className='m-2 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' >Update Details</button>
 
 
       <h2 className='text-xl mx-auto font-semibold my-8'>2. Update Password.</h2>
@@ -276,7 +276,7 @@ const myaccount = () => {
         </div>
     
       </div>
-      <button onClick={handlePassword} className='m-2 flex ml-2 mt-4 p-8 text-white bg-sky-500 border-0 py-2 focus:outline-none hover:bg-sky-700 rounded text-sm' >Change Password</button>
+      <button onClick={handlePassword} className='m-2 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' >Change Password</button>
 
 
     </div>

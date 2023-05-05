@@ -185,10 +185,10 @@ const UpdateProduct = ({ product, variants, error }) => {
         pauseOnHover
         theme="light"
       />
-      <div className='bg-sky-300 min-h-screen w-1/4 pt-24 flex flex-col'>
+      <div className='bg-pink-300 min-h-screen w-1/4 pt-24 flex flex-col'>
         <Dashboard />
       </div>
-      <div className=' min-h-screen w-3/4  flex flex-col my-5 bg-sky-50'>
+      <div className=' min-h-screen w-3/4  flex flex-col my-5 bg-pink-50'>
 
 
         <h1 className='text-3xl font-bold  text-center pt-20'>Current Product</h1>
@@ -338,8 +338,8 @@ const UpdateProduct = ({ product, variants, error }) => {
           </div>
           <div className="mx-auto flex">
             <div className="p-3 w-full text-center">
-              <button onClick={handleUpdate} className='bg-sky-500 hover:bg-sky-600 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Update Product</button>
-              <button onClick={handleDelete} className='bg-sky-500 hover:bg-sky-600 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Delete Product</button>
+              <button onClick={handleUpdate} className='bg-pink-500 hover:bg-pink-600 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Update Product</button>
+              <button onClick={handleDelete} className='bg-pink-500 hover:bg-pink-600 px-2 rounded-md py-1 my-5 w-full h-[50px] text-xl text-white mx-2'>Delete Product</button>
 
             </div>
           </div>

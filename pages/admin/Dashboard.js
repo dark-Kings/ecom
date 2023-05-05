@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div  className='flex min-h-screen'>
-      <div className='bg-sky-300 min-h-screen w-full pt-24 flex flex-col'>
+      <div className='bg-pink-300 min-h-screen w-full pt-24 flex flex-col'>
       <Link href={'/admin'}>
         <div className='m-2 text-2xl font-semibold p-3'>Admin </div> 
         </Link>

@@ -70,7 +70,7 @@ const Contact = () => {
         pauseOnHover
         theme="light"
       />
-        <section id={styles.contact} className={`py-20 ${styles.contact} bg-sky-50`}>
+        <section id={styles.contact} className={`py-20 ${styles.contact} bg-pink-50`}>
           <div className={styles.container}>
             <div className={styles["section-title"]}>
               <h2 data-aos="fade-up">Contact</h2>
