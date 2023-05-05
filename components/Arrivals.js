@@ -7,7 +7,7 @@ const Arrivals = () => {
     <section className={styles.arrival_section}>
       <div className={styles.container}>
         <div className={`${styles.box} ${styles.imagearrivals}`}>
-          <div className={styles.row}>
+          <div className={styles.arrivalrow}>
             <div className={`${styles.shop_now}`}>
               <div
                 className={`${styles.heading_container} ${styles.remove_line_bt}`}
