@@ -4,7 +4,6 @@ import Whyus from "../components/Whyus";
 import Arrivals from "../components/Arrivals";
 import Subscribe from "../components/Subscribe";
 import Testimonial from "../components/Testimonial";
-import TempProduct from "../components/TempProduct";
 import React from 'react'
 import Link from 'next/link'
 import Product from '../models/Product'
@@ -43,7 +42,7 @@ export default function Home({products}) {
                     key={products[item]._id}
                     href={`/product/${products[item].slug}`}
                   >
-                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer">
+                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer bg-pink-50">
                       <a className="block relative  rounded overflow-hidden">
                         <img
                           alt="ecommerce"
@@ -115,7 +114,7 @@ export default function Home({products}) {
           </div>
       </section>
     </div>
-      {/* <TempProduct /> */}
+ 
 
 
             

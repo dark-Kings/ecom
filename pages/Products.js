@@ -29,7 +29,7 @@ export default function Home({ products }) {
                     key={products[item]._id}
                     href={`/product/${products[item].slug}`}
                   >
-                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer">
+                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer bg-pink-50">
                       <a className="block relative  rounded overflow-hidden">
                         <img
                           alt="ecommerce"

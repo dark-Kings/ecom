@@ -11,7 +11,7 @@ const Faq = () => {
       </Head>
       {/* <header> */}
         {/* <div className="container my-24 px-6 mx-auto"> */}
-          <section className="mb-32 text-gray-800">
+          <section className="mb-32 text-gray-800 py-20  px-5 bg-pink-50">
             <h2 className="text-3xl font-bold mb-12 text-center">
               Frequently asked questions
             </h2>

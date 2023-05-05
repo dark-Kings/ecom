@@ -46,10 +46,10 @@ const index = () => {
 
   return (
     <div  className='flex min-h-screen'>
-    <div className='bg-yellow-300 min-h-screen w-1/4 pt-24 flex flex-col'>
+    <div className='bg-pink-300 min-h-screen w-1/4 pt-24 flex flex-col'>
     <Dashboard/> 
     </div>
-    <div className=' min-h-screen w-3/4 py-5 flex flex-col'>
+    <div className=' min-h-screen w-3/4 py-5 flex flex-col bg-pink-50'>
     <div className='container  p-12'>
     <h1 className='text-3xl font-bold my-8 text-center'>Admin Details</h1>
 

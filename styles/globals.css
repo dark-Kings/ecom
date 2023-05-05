@@ -36,9 +36,10 @@ body{
         align-items: flex-start;
       } */
       
-      .allproduct_container{
-        background-color: #e1dafc;
-      }
+      /* .allproduct_container{
+        background-color: rgb(233, 237, 243);
+      } */
+      
       .allproduct_container .allproduct_containerh2, .heading_container{
         position: relative;
         margin-bottom: 0;

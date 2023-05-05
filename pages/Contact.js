@@ -70,7 +70,7 @@ const Contact = () => {
         pauseOnHover
         theme="light"
       />
-        <section id={styles.contact} className={styles.contact}>
+        <section id={styles.contact} className={`py-20 ${styles.contact} bg-pink-50`}>
           <div className={styles.container}>
             <div className={styles["section-title"]}>
               <h2 data-aos="fade-up">Contact</h2>
@@ -99,7 +99,7 @@ const Contact = () => {
                     <path d="M13 4.069V2h-2v2.069A8.01 8.01 0 0 0 4.069 11H2v2h2.069A8.008 8.008 0 0 0 11 19.931V22h2v-2.069A8.007 8.007 0 0 0 19.931 13H22v-2h-2.069A8.008 8.008 0 0 0 13 4.069zM12 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"></path>
                   </svg>
                   <h3>Our Address</h3>
-                  <p>Door2Door Services, Haldwani, Goraparow</p>
+                  <p>Shivalik Bahwan, 60,61 Pantnagar</p>
                 </div>
               </div>
 
@@ -121,11 +121,11 @@ const Contact = () => {
                   <h3>Email Us</h3>
                   <p>
                     <a href="mailto:door2doorserviceshld@gmail.com">
-                      door2doorsed@gmail.com
+                    clothify@gmail.com
                     </a>
                     <br />
                     <a href="mailto:door2doorserviceshld@gmail.com">
-                      infodoo@gms.com
+                      ansdeep@gmail.com
                     </a>
                   </p>
                 </div>
@@ -148,10 +148,10 @@ const Contact = () => {
                   </svg>
                   <h3>Call Us</h3>
                   <p>
-                    <a href="tel:8954208211">+91 8954208211</a>
+                    <a href="tel:8954208211">+91 7351549320</a>
                     <a href="tel:8433024414">
                       <br />
-                      +91 8433024414
+                      +91 9368736361
                     </a>
                   </p>
                 </div>

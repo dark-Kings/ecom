@@ -14,7 +14,7 @@ export default function Home({ products }) {
 
             <div className='flex min-h-screen'>
        
-                <div className='bg-yellow-300 min-h-screen w-1/4 pt-24 flex flex-col'>
+                <div className='bg-pink-300 min-h-screen w-1/4 pt-24 flex flex-col'>
                     <Dashboard />
                 </div>
 
@@ -37,7 +37,7 @@ export default function Home({ products }) {
                                             key={products[item]._id}
                                             href={`/admin/Product/UpdateProduct?slug=${products[item].slug}`}
                                         >
-                                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer">
+                                            <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer bg-pink-50">
                                                 <a className="block relative  rounded overflow-hidden">
                                                     <img
                                                         alt="ecommerce"

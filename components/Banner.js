@@ -74,8 +74,8 @@ const Banner = () => {
                           veniam, vel architecto veritatis delectus repellat
                           modi impedit sequi.
                         </p>
-                        <div className={styles['btn-box']}>
-                          <a href="" className={styles.btn1}>
+                        <div className={` ${styles['btn-box']}`}>
+                        <a href="#productssssss" className= {` ${styles.btn1}`}>
                             Shop Now
                           </a>
                         </div>

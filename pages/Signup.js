@@ -74,7 +74,7 @@ const Signup = () => {
         pauseOnHover
         theme="light"
       />
-      <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-start  justify-center py-24 px-4 sm:px-6 lg:px-8 bg-pink-50">
       <Head>
         <title>Signup -codeswear.com</title>
         </Head>
@@ -157,7 +157,7 @@ const Signup = () => {
                 className="group relative flex w-full justify-center rounded-md border border-transparent bg-pink-600 py-2 px-4 text-sm font-medium text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <AiOutlineLock className="h-5 w-5 text-pink-500 group-hover:text-pink-400" />
+                  <AiOutlineLock className="h-5 w-5 text-white group-hover:text-pink-400" />
                 </span>
                 Sign Up
               </button>

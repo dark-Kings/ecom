@@ -195,7 +195,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   }
 
   return (
-    <div className='container m-auto p-12'>
+    <div className='container m-auto p-12 bg-pink-50'>
       <ToastContainer
         position="top-left"
         autoClose={5000}

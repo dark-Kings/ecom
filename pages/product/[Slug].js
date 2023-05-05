@@ -93,7 +93,7 @@ const Slug = ({ addtoCart, product, variants, buyNow, error }) => {
         theme="light"
       />
 
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-24 mx-auto bg-pink-50">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img alt="ecommerce" className="lg:w-1/2 sm:m-auto w-full sm:w-96  px-16 lg:h-auto  object-cover object-top rounded " src={product.img} />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
