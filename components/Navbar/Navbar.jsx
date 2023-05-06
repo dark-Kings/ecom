@@ -101,7 +101,8 @@ const [roll, setRoll] = useState(0)
       <div className={styles['app__navbar-logo']}>
         <Link href={'/'}>
           <div className="logo mr-auto md:mx-5">
-            <Image src="/logo.jpg" alt="" height={30} width={70} priority />
+            <Image src="/logo.png" alt="" height={30} width={70} priority />
+            {/* <Image src="/logo.jpg" alt="" height={30} width={70} priority /> */}
           </div>
         </Link>
       </div>
