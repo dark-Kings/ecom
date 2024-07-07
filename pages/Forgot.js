@@ -53,6 +53,7 @@ const Forgot = () => {
   if(res.success){
   e.preventDefault();
   setLoading(true);
+  console.log(res)
 
 
   emailjs.send(
