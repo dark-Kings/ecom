@@ -45,7 +45,7 @@ const handler = async (req, res) => {
       cancel_url: `${process.env.NEXT_PUBLIC_HOST}/`, // Redirect URL if the payment is canceled
     });
     
-
+  //  console.log(session.id)
     res.json({ id: session.id });
 
 

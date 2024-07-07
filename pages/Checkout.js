@@ -104,96 +104,96 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   }
 
 
-  const initiatePayment = async () => {
+  // const initiatePayment = async () => {
 
-    let Oid = Math.floor(Math.random() * Date.now());
+  //   let Oid = Math.floor(Math.random() * Date.now());
 
-    // Get a transaction token
+  //   // Get a transaction token
 
-    const data = { cart, subTotal, Oid, email, name, address, pincode, phone,state,city }
-    const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-    })
+  //   const data = { cart, subTotal, Oid, email, name, address, pincode, phone,state,city }
+  //   const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
 
-    let txnRes = await a.json();
-    let c = txnRes.b
-    // console.log(c)
-    // console.log(txnRes)
+  //   let txnRes = await a.json();
+  //   let c = txnRes.b
+  //   // console.log(c)
+  //   // console.log(txnRes)
 
-    //self code to make entire simulation
-    if (typeof window !== "undefined" && txnRes.success == true) {
-      window.location.href = c
-    }
-    else {
-      if(txnRes.cartClear){
+  //   //self code to make entire simulation
+  //   if (typeof window !== "undefined" && txnRes.success == true) {
+  //     window.location.href = c
+  //   }
+  //   else {
+  //     if(txnRes.cartClear){
 
-        clearCart()
-      }
-      toast.error(txnRes.error, {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+  //       clearCart()
+  //     }
+  //     toast.error(txnRes.error, {
+  //       position: "bottom-left",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
 
 
 
-    // gateway code
-    // if(txnRes.success){
-    //   let txnToken = txnRes.txnToken
+  //   // gateway code
+  //   // if(txnRes.success){
+  //   //   let txnToken = txnRes.txnToken
 
-    // let config = {
-    //   "root": "",
-    //   "flow": "DEFAULT",
-    //   "data": {
-    //     "orderId": Oid,
-    //     "token": txnToken,
-    //     "tokenType": "TXN_TOKEN",
-    //     "amount": subTotal,
-    //     "userDetail": {
-    //       "mobileNumber": "",
-    //       "name": ""
-    //     }
-    //   },
-    //   "merchant": {
-    //     "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
-    //     "name": "Anshul",
-    //     "redirect": true
-    //   },
+  //   // let config = {
+  //   //   "root": "",
+  //   //   "flow": "DEFAULT",
+  //   //   "data": {
+  //   //     "orderId": Oid,
+  //   //     "token": txnToken,
+  //   //     "tokenType": "TXN_TOKEN",
+  //   //     "amount": subTotal,
+  //   //     "userDetail": {
+  //   //       "mobileNumber": "",
+  //   //       "name": ""
+  //   //     }
+  //   //   },
+  //   //   "merchant": {
+  //   //     "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
+  //   //     "name": "Anshul",
+  //   //     "redirect": true
+  //   //   },
 
-    //   "handler": {}
-    // };
+  //   //   "handler": {}
+  //   // };
 
-    // Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
-    //   window.Paytm.CheckoutJs.invoke();
-    // }).catch(function onError(error) {
-    //   console.log("error =>", error);
-    // })
-    //  }
+  //   // Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
+  //   //   window.Paytm.CheckoutJs.invoke();
+  //   // }).catch(function onError(error) {
+  //   //   console.log("error =>", error);
+  //   // })
+  //   //  }
 
-    // else{
-    //   clearCart()
-    //   toast.error(txnRes.error, {
-    //     position: "bottom-left",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    // }
-  }
+  //   // else{
+  //   //   clearCart()
+  //   //   toast.error(txnRes.error, {
+  //   //     position: "bottom-left",
+  //   //     autoClose: 5000,
+  //   //     hideProgressBar: false,
+  //   //     closeOnClick: true,
+  //   //     pauseOnHover: true,
+  //   //     draggable: true,
+  //   //     progress: undefined,
+  //   //     theme: "light",
+  //   //   });
+  //   // }
+  // }
 
   const makePayment = async ()=>{
 
@@ -226,6 +226,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
 
     let c = result.sessionId
+    // console.log(result,c,"frontend check")
 
     // if (typeof window !== "undefined" && txnRes.success == true) {
     //   window.location.href = c
