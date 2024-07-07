@@ -4,6 +4,7 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs'
 import Head from 'next/head';
 import Script from 'next/script';
+import {loadStripe} from '@stripe/stripe-js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -194,6 +195,60 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     // }
   }
 
+  const makePayment = async ()=>{
+
+    const stripe = await loadStripe("pk_test_51N7hl3SHBE45jscNJjyppjKEql4Q4sNTM1qiN2nqlxWHYBJN5MUy0vvf0H0V3YfgiuMIqvsfeKZReSqMn74f0bmi00hL39P2ji")
+
+    const header = {
+        "Content-type" : "application/json"
+    }
+
+    const body = {
+        product : cart,
+        total : subTotal
+    } 
+
+    // body.product.price = totaldetails
+    // console.log("my data", body)
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`,{
+        method:"POST",
+        headers: header,
+        body:JSON.stringify(body)
+    })
+    const txnRes = await response.json()
+    // console.log("request generated")
+    
+    
+    const result = stripe.redirectToCheckout({
+        sessionId: txnRes.id
+    })
+
+
+    let c = result.sessionId
+
+    // if (typeof window !== "undefined" && txnRes.success == true) {
+    //   window.location.href = c
+    // }
+    // else {
+    //   if(txnRes.cartClear){
+
+    //     clearCart()
+    //   }
+    //   toast.error(txnRes.error, {
+    //     position: "bottom-left",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    // }
+
+}
+
   return (
     <div className='container m-auto p-12 bg-pink-50'>
       <ToastContainer
@@ -333,7 +388,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link> */}
 
 
-          <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={initiatePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
+          <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={makePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
       </div>
     </div>
   )
