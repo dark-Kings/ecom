@@ -198,14 +198,22 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   const makePayment = async ()=>{
 
     const stripe = await loadStripe("pk_test_51N7hl3SHBE45jscNJjyppjKEql4Q4sNTM1qiN2nqlxWHYBJN5MUy0vvf0H0V3YfgiuMIqvsfeKZReSqMn74f0bmi00hL39P2ji")
-
+    let Oid = Math.floor(Math.random() * Date.now());
     const header = {
         "Content-type" : "application/json"
     }
 
     const body = {
-        product : cart,
-        total : subTotal
+        cart : cart,
+        subTotal : subTotal,
+        email: email, 
+        name: name, 
+        address: address, 
+        pincode: pincode, 
+        phone: phone,
+        state: state,
+        city: city,
+        Oid: Oid
     } 
 
     // body.product.price = totaldetails
