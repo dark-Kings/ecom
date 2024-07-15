@@ -104,112 +104,120 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   }
 
 
-  const initiatePayment = async () => {
+  // const initiatePayment = async () => {
 
-    let Oid = Math.floor(Math.random() * Date.now());
+  //   let Oid = Math.floor(Math.random() * Date.now());
 
-    // Get a transaction token
+  //   // Get a transaction token
 
-    const data = { cart, subTotal, Oid, email, name, address, pincode, phone,state,city }
-    const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-    })
+  //   const data = { cart, subTotal, Oid, email, name, address, pincode, phone,state,city }
+  //   const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
 
-    let txnRes = await a.json();
-    let c = txnRes.b
-    // console.log(c)
-    // console.log(txnRes)
+  //   let txnRes = await a.json();
+  //   let c = txnRes.b
+  //   // console.log(c)
+  //   // console.log(txnRes)
 
-    //self code to make entire simulation
-    if (typeof window !== "undefined" && txnRes.success == true) {
-      window.location.href = c
-    }
-    else {
-      if(txnRes.cartClear){
+  //   //self code to make entire simulation
+  //   if (typeof window !== "undefined" && txnRes.success == true) {
+  //     window.location.href = c
+  //   }
+  //   else {
+  //     if(txnRes.cartClear){
 
-        clearCart()
-      }
-      toast.error(txnRes.error, {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+  //       clearCart()
+  //     }
+  //     toast.error(txnRes.error, {
+  //       position: "bottom-left",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
 
 
 
-    // gateway code
-    // if(txnRes.success){
-    //   let txnToken = txnRes.txnToken
+  //   // gateway code
+  //   // if(txnRes.success){
+  //   //   let txnToken = txnRes.txnToken
 
-    // let config = {
-    //   "root": "",
-    //   "flow": "DEFAULT",
-    //   "data": {
-    //     "orderId": Oid,
-    //     "token": txnToken,
-    //     "tokenType": "TXN_TOKEN",
-    //     "amount": subTotal,
-    //     "userDetail": {
-    //       "mobileNumber": "",
-    //       "name": ""
-    //     }
-    //   },
-    //   "merchant": {
-    //     "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
-    //     "name": "Anshul",
-    //     "redirect": true
-    //   },
+  //   // let config = {
+  //   //   "root": "",
+  //   //   "flow": "DEFAULT",
+  //   //   "data": {
+  //   //     "orderId": Oid,
+  //   //     "token": txnToken,
+  //   //     "tokenType": "TXN_TOKEN",
+  //   //     "amount": subTotal,
+  //   //     "userDetail": {
+  //   //       "mobileNumber": "",
+  //   //       "name": ""
+  //   //     }
+  //   //   },
+  //   //   "merchant": {
+  //   //     "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
+  //   //     "name": "Anshul",
+  //   //     "redirect": true
+  //   //   },
 
-    //   "handler": {}
-    // };
+  //   //   "handler": {}
+  //   // };
 
-    // Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
-    //   window.Paytm.CheckoutJs.invoke();
-    // }).catch(function onError(error) {
-    //   console.log("error =>", error);
-    // })
-    //  }
+  //   // Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
+  //   //   window.Paytm.CheckoutJs.invoke();
+  //   // }).catch(function onError(error) {
+  //   //   console.log("error =>", error);
+  //   // })
+  //   //  }
 
-    // else{
-    //   clearCart()
-    //   toast.error(txnRes.error, {
-    //     position: "bottom-left",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    // }
-  }
+  //   // else{
+  //   //   clearCart()
+  //   //   toast.error(txnRes.error, {
+  //   //     position: "bottom-left",
+  //   //     autoClose: 5000,
+  //   //     hideProgressBar: false,
+  //   //     closeOnClick: true,
+  //   //     pauseOnHover: true,
+  //   //     draggable: true,
+  //   //     progress: undefined,
+  //   //     theme: "light",
+  //   //   });
+  //   // }
+  // }
 
   const makePayment = async ()=>{
 
     const stripe = await loadStripe("pk_test_51N7hl3SHBE45jscNJjyppjKEql4Q4sNTM1qiN2nqlxWHYBJN5MUy0vvf0H0V3YfgiuMIqvsfeKZReSqMn74f0bmi00hL39P2ji")
-
+    let Oid = Math.floor(Math.random() * Date.now());
     const header = {
         "Content-type" : "application/json"
     }
 
     const body = {
-        product : cart,
-        total : subTotal
+        cart : cart,
+        subTotal : subTotal,
+        email: email, 
+        name: name, 
+        address: address, 
+        pincode: pincode, 
+        phone: phone,
+        state: state,
+        city: city,
+        Oid: Oid
     } 
 
     // body.product.price = totaldetails
-    console.log("my data", body)
+    // console.log("my data", body)
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`,{
         method:"POST",
@@ -217,7 +225,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
         body:JSON.stringify(body)
     })
     const txnRes = await response.json()
-    console.log("request generated")
+    // console.log("request generated")
     
     
     const result = stripe.redirectToCheckout({
@@ -226,6 +234,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
 
     let c = result.sessionId
+    // console.log(result,c,"frontend check")
 
     // if (typeof window !== "undefined" && txnRes.success == true) {
     //   window.location.href = c

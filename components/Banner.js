@@ -39,11 +39,7 @@ const Banner = () => {
                           Discount
                         </h1>
                         <p>
-                          Explicabo esse amet tempora quibusdam laudantium,
-                          laborum eaque magnam fugiat hic? Esse dicta aliquid
-                          error repudiandae earum suscipit fugiat molestias,
-                          veniam, vel architecto veritatis delectus repellat
-                          modi impedit sequi.
+                        "Shop now and save with our exclusive offer! Get 10% off on all purchases with the code 'SALE10'. Whether you're looking for fashion, electronics, or home decor, we've got you covered. Hurry, this limited-time offer won't last long. Visit our website or stop by our store today!"
                         </p>
                         <div className={styles['btn-box']}>
                         <a href="#productssssss" className={styles.btn1}>
@@ -68,11 +64,7 @@ const Banner = () => {
                           Discount
                         </h1>
                         <p>
-                          Explicabo esse amet tempora quibusdam laudantium,
-                          laborum eaque magnam fugiat hic? Esse dicta aliquid
-                          error repudiandae earum suscipit fugiat molestias,
-                          veniam, vel architecto veritatis delectus repellat
-                          modi impedit sequi.
+                        "Get 20% off your purchase! Don't miss out on this incredible offer. Whether you're looking for stylish clothes, trendy accessories, or the latest gadgets, we have it all. Use code SAVE20 at checkout to enjoy this exclusive discount. Hurry, limited time only! Shop now and save big!"
                         </p>
                         <div className={` ${styles['btn-box']}`}>
                         <a href="#productssssss" className= {` ${styles.btn1}`}>
