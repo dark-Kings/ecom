@@ -11,6 +11,7 @@
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@stripe/stripe-js": "^3.5.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.2.3",
     "crypto-js": "^4.1.1",
     "emailjs": "^4.0.1",
