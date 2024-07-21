@@ -4,12 +4,11 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { BsFillBagCheckFill } from 'react-icons/bs'
 import Head from 'next/head';
 import Script from 'next/script';
-import {loadStripe} from '@stripe/stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
+const Checkout = ({ cart, clearCart, addtoCart, removefromCart, subTotal }) => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -19,19 +18,19 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
   const [state, setState] = useState('')
   const [city, setCity] = useState('')
   const [disabled, setDisabled] = useState(true)
-  const [user, setUser] = useState({value:null})
-
-  useEffect(()=>{
-    const myuser= JSON.parse(localStorage.getItem("myuser"))
-    if(myuser && myuser.token){
-         setUser(myuser)
-         setEmail(myuser.email)
-         fetchData(myuser.token)
-   }
-  },[])
+  const [user, setUser] = useState({ value: null })
 
   useEffect(() => {
-  
+    const myuser = JSON.parse(localStorage.getItem("myuser"))
+    if (myuser && myuser.token) {
+      setUser(myuser)
+      setEmail(myuser.email)
+      fetchData(myuser.token)
+    }
+  }, [])
+
+  useEffect(() => {
+
 
     if (name.length >= 3 && email.length >= 3 && phone.length >= 3 && address.length >= 3 && pincode.length >= 3) {
       setDisabled(false)
@@ -39,8 +38,8 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     else {
       setDisabled(true)
     }
- 
-  }, [name,email,phone,pincode,address])
+
+  }, [name, email, phone, pincode, address])
 
 
   const fetchData = async (token) => {
@@ -61,7 +60,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     getpincode(res.pincode)
   }
 
-  const getpincode= async(pin)=>{
+  const getpincode = async (pin) => {
     let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
     let pinJson = await pins.json()
     if (Object.keys(pinJson).includes(pin)) {
@@ -91,7 +90,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     else if (e.target.name == 'pincode') {
       setPincode(e.target.value)
       if (e.target.value.length == 6) {
-         getpincode(e.target.value)
+        getpincode(e.target.value)
       }
       else {
         setCity('')
@@ -103,160 +102,40 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
     }
   }
 
-
-  // const initiatePayment = async () => {
-
-  //   let Oid = Math.floor(Math.random() * Date.now());
-
-  //   // Get a transaction token
-
-  //   const data = { cart, subTotal, Oid, email, name, address, pincode, phone,state,city }
-  //   const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-
-  //   let txnRes = await a.json();
-  //   let c = txnRes.b
-  //   // console.log(c)
-  //   // console.log(txnRes)
-
-  //   //self code to make entire simulation
-  //   if (typeof window !== "undefined" && txnRes.success == true) {
-  //     window.location.href = c
-  //   }
-  //   else {
-  //     if(txnRes.cartClear){
-
-  //       clearCart()
-  //     }
-  //     toast.error(txnRes.error, {
-  //       position: "bottom-left",
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "light",
-  //     });
-  //   }
-
-
-
-  //   // gateway code
-  //   // if(txnRes.success){
-  //   //   let txnToken = txnRes.txnToken
-
-  //   // let config = {
-  //   //   "root": "",
-  //   //   "flow": "DEFAULT",
-  //   //   "data": {
-  //   //     "orderId": Oid,
-  //   //     "token": txnToken,
-  //   //     "tokenType": "TXN_TOKEN",
-  //   //     "amount": subTotal,
-  //   //     "userDetail": {
-  //   //       "mobileNumber": "",
-  //   //       "name": ""
-  //   //     }
-  //   //   },
-  //   //   "merchant": {
-  //   //     "mid": process.env.NEXT_PUBLIC_PAYTM_MID,
-  //   //     "name": "Anshul",
-  //   //     "redirect": true
-  //   //   },
-
-  //   //   "handler": {}
-  //   // };
-
-  //   // Window.Paytm.CheckoutJs.init(config).then(function onSuccess() {
-  //   //   window.Paytm.CheckoutJs.invoke();
-  //   // }).catch(function onError(error) {
-  //   //   console.log("error =>", error);
-  //   // })
-  //   //  }
-
-  //   // else{
-  //   //   clearCart()
-  //   //   toast.error(txnRes.error, {
-  //   //     position: "bottom-left",
-  //   //     autoClose: 5000,
-  //   //     hideProgressBar: false,
-  //   //     closeOnClick: true,
-  //   //     pauseOnHover: true,
-  //   //     draggable: true,
-  //   //     progress: undefined,
-  //   //     theme: "light",
-  //   //   });
-  //   // }
-  // }
-
-  const makePayment = async ()=>{
+  const makePayment = async () => {
 
     const stripe = await loadStripe("pk_test_51N7hl3SHBE45jscNJjyppjKEql4Q4sNTM1qiN2nqlxWHYBJN5MUy0vvf0H0V3YfgiuMIqvsfeKZReSqMn74f0bmi00hL39P2ji")
+
+    // const stripe = await loadStripe(`${process.env.STRIPE_PK}`)
     let Oid = Math.floor(Math.random() * Date.now());
     const header = {
-        "Content-type" : "application/json"
+      "Content-type": "application/json"
     }
 
     const body = {
-        cart : cart,
-        subTotal : subTotal,
-        email: email, 
-        name: name, 
-        address: address, 
-        pincode: pincode, 
-        phone: phone,
-        state: state,
-        city: city,
-        Oid: Oid
-    } 
+      cart: cart,
+      subTotal: subTotal,
+      email: email,
+      name: name,
+      address: address,
+      pincode: pincode,
+      phone: phone,
+      state: state,
+      city: city,
+      Oid: Oid
+    }
 
-    // body.product.price = totaldetails
-    // console.log("my data", body)
-
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`,{
-        method:"POST",
-        headers: header,
-        body:JSON.stringify(body)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`, {
+      method: "POST",
+      headers: header,
+      body: JSON.stringify(body)
     })
-    const txnRes = await response.json()
-    // console.log("request generated")
-    
-    
-    const result = stripe.redirectToCheckout({
-        sessionId: txnRes.id
-    })
+    const session = await response.json()
+    console.log("checkout", session)
 
+    await stripe.redirectToCheckout({ sessionId: session.sessionId }, { lineItems: session.products_details })
 
-    let c = result.sessionId
-    // console.log(result,c,"frontend check")
-
-    // if (typeof window !== "undefined" && txnRes.success == true) {
-    //   window.location.href = c
-    // }
-    // else {
-    //   if(txnRes.cartClear){
-
-    //     clearCart()
-    //   }
-    //   toast.error(txnRes.error, {
-    //     position: "bottom-left",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //   });
-    // }
-
-}
+  }
 
   return (
     <div className='container m-auto p-12 bg-pink-50'>
@@ -279,7 +158,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
 
         <Script type='application/javascript' crossOrigin='anonymous' src={`${process
           .env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} />
-          </Head>
+      </Head>
 
 
 
@@ -299,19 +178,19 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <label htmlFor="email"
             className="leading-7 text-sm text-gray-600">Email</label>
 
-          {user && user.token? 
+          {user && user.token ?
             <input type="email"
-            id="email"
-            name="email"
-            readOnly={true}
-            value={user.email}
-            className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-            :<input type="email"
-            id="email"
-            name="email"
-            onChange={handleChange}
-            value={email}
-            className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />}
+              id="email"
+              name="email"
+              readOnly={true}
+              value={user.email}
+              className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            : <input type="email"
+              id="email"
+              name="email"
+              onChange={handleChange}
+              value={email}
+              className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />}
 
 
 
@@ -397,7 +276,7 @@ const Checkout = ({ cart,clearCart, addtoCart, removefromCart, subTotal }) => {
           <BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button></Link> */}
 
 
-          <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={makePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
+        <button disabled={disabled} className='disabled:bg-pink-300 flex ml-2 mt-4 p-8 text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-700 rounded text-sm' onClick={makePayment}><BsFillBagCheckFill className='m-1 ' /> Pay ₹{subTotal}</button>
       </div>
     </div>
   )
