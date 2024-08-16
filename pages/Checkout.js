@@ -104,7 +104,7 @@ const Checkout = ({ cart, clearCart, addtoCart, removefromCart, subTotal }) => {
 
   const makePayment = async () => {
 
-    const stripe = await loadStripe("pk_test_51N7hl3SHBE45jscNJjyppjKEql4Q4sNTM1qiN2nqlxWHYBJN5MUy0vvf0H0V3YfgiuMIqvsfeKZReSqMn74f0bmi00hL39P2ji")
+    const stripe = await loadStripe("pk_test_51N0MJISHiqiqoYUqLCpLRz5zDIqJm2ZEGwYtD5UjGFUEf4jIONrWpZrk9RAGxse7Tuiv29sSwybd6U75gEMbB16e00gWC8pzJs")
 
     // const stripe = await loadStripe(`${process.env.STRIPE_PK}`)
     let Oid = Math.floor(Math.random() * Date.now());
@@ -131,7 +131,7 @@ const Checkout = ({ cart, clearCart, addtoCart, removefromCart, subTotal }) => {
       body: JSON.stringify(body)
     })
     const session = await response.json()
-    console.log("checkout", session)
+    // console.log("checkout", session)
 
     await stripe.redirectToCheckout({ sessionId: session.sessionId }, { lineItems: session.products_details })
 

@@ -1,12 +1,8 @@
-// import User from '../../models/Contact';
-// import connectDb from '../../middleware/mongoose';
-import Order from "../../models/Order"
 import pincodes from '../../pincodes.json'
 import Product from "../../models/Product"
-import connectDb from '../../middleware/mongoose';
 import Stripe from 'stripe'
 
-const stripe = new Stripe("sk_test_51N7hl3SHBE45jscN5AtjXTUNJacUegzFPTJHZeSglVfIhi8Vn6ek02Mf11CQoA3TCv0lnLaf1HdNIuCyYGzAo16Z00SRKVA0bE");
+const stripe = new Stripe("sk_test_51N0MJISHiqiqoYUqhFOFwxnIuLhY6Ni8hONxBt0bo4pN22ivrzRzfKENb9oVtz477iVDpewhVNS4sD1Q6A9cow3m00cAoK4nj1");
 // const stripe = new Stripe(`${process.env.STRIPE_SK}`);
 
 const handler = async (req, res) => {
@@ -52,20 +48,20 @@ const handler = async (req, res) => {
       res.status(200).json({ success: false, cartClear: false, 'error': "Please enter your 6 digit pincode and try again" })
       return
     }
-
-    let order = new Order({
+    let orderDetail = {
       email: req.body.email,
-      name: req.body.name,
       orderId: req.body.Oid,
+      name: req.body.name,
       address: req.body.address,
       city: req.body.city,
       state: req.body.state,
       pincode: req.body.pincode,
       phone: req.body.phone,
-      amount: req.body.subTotal,
       products: req.body.cart
-    })
-    await order.save()
+    }
+    // let order = new Order(a)
+    // console.log(order)
+    // await order.save()
 
     const { cart } = req.body;
 
@@ -87,9 +83,10 @@ const handler = async (req, res) => {
     }
 
     // Convert lineItems to a string representation
-    const products_details = lineItems.map(item => `${item.quantity} ${item.price_data.unit_amount / 100} ${item.price_data.product_data.name}`).join(', ');
+    // const products_details = lineItems.map(item => `${item.quantity} ${item.price_data.unit_amount / 100} ${item.price_data.product_data.name}`).join(', ');
+    const products_details = JSON.stringify(orderDetail)
 
-    console.log(products_details);
+    // console.log(products_details);
 
     // Create Stripe Checkout session
     const session = await stripe.checkout.sessions.create({
@@ -101,10 +98,10 @@ const handler = async (req, res) => {
       },
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_HOST}/payment-details?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_HOST}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_HOST}/Checkout`,
     });
 
-    console.log(session)
+    // console.log(session)
 
     res.status(200).json({ sessionId: session.id, products_details: lineItems });
 
@@ -115,4 +112,4 @@ const handler = async (req, res) => {
 
 }
 
-export default connectDb(handler)
+export default handler

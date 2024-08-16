@@ -24,7 +24,7 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
 
   useEffect(() => {
     Object.keys(cart).length !== 0 && setSidebar(true)
-    let exempted = ['/About','/Contact','/Faq','/admin/AddProduct','/admin/Products','/admin/Product/UpdateProduct','/admin','/Checkout', '/Order', '/Orders', '/myaccount', '/', '/About', '/Contact', '/Login', '/Signup', '/Forgot']
+    let exempted = ['/About', '/Contact', '/Faq', '/admin/AddProduct', '/admin/Products', '/admin/Product/UpdateProduct', '/admin', '/Checkout', '/Order', '/Orders', '/myaccount', '/', '/About', '/Contact', '/Login', '/Signup', '/Forgot', '/payment-details']
     if (exempted.includes(router.pathname)) {
       setSidebar(false)
     }
@@ -33,7 +33,7 @@ const Navbar = ({ logout, user, cart, addtoCart, removefromCart, clearCart, subT
 
 
   const [Fuser, setFuser] = useState({ value: null })
-const [roll, setRoll] = useState(0)
+  const [roll, setRoll] = useState(0)
 
   useEffect(() => {
     const myuser = JSON.parse(localStorage.getItem("myuser"))
@@ -56,31 +56,14 @@ const [roll, setRoll] = useState(0)
     })
 
     let res = await a.json();
-   setRoll(res.Uroll)
-   
-    
+    setRoll(res.Uroll)
+
+
   }
 
 
   const toggleCart = () => {
-    // if (ref.current.classList.contains('translate-x-full')){
-    //   ref.current.classList.remove('translate-x-full')
-    //   ref.current.classList.add('translate-x-0')
-    //   ref.current.classList.add('hidden')
-    // }
-    // else if (!ref.current.classList.contains('translate-x-full')){
-    //   ref.current.classList.remove('translate-x-0')
-    //   ref.current.classList.add('translate-x-full')
-    //   ref.current.classList.add('block')
-    // }
-    // if (ref.current.classList.contains('hidden')) {
-    //   ref.current.classList.remove('hidden')
-    //   ref.current.classList.add('block')
-    // }
-    // else if (!ref.current.classList.contains('hidden')) {
-    //   ref.current.classList.remove('block')
-    //   ref.current.classList.add('hidden')
-    // }
+
     setSidebar(!sidebar)
   }
 
@@ -108,18 +91,18 @@ const [roll, setRoll] = useState(0)
       </div>
       {/* for bigger devices */}
       <div>
-      <ul className={styles['app__navbar-links']}>
-        {['Products', 'Tshirts', 'Hoodies', 'Stickers', 'Mugs'].map((item) => (
-          <li className={`${styles.app__flex} ${styles['p-text']}`} key={`link-${item}`}>
-            <div></div>
-            <a href={`/${item}`}>{item}</a>
-          </li>
-        ))}
-      </ul>
+        <ul className={styles['app__navbar-links']}>
+          {['Products', 'Tshirts', 'Hoodies', 'Stickers', 'Mugs'].map((item) => (
+            <li className={`${styles.app__flex} ${styles['p-text']}`} key={`link-${item}`}>
+              <div></div>
+              <a href={`/${item}`}>{item}</a>
+            </li>
+          ))}
+        </ul>
       </div>
-   
+
       <div className={`hidden ${styles.dekstopUser}`}>
- 
+
         <div className="relative right-[80px]">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -137,13 +120,13 @@ const [roll, setRoll] = useState(0)
         </div>
 
 
-        
+
         <div className=" Cart items-center cursor-pointer absolute right-0 top-5 mx-5 flex">
           <span onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }}>
             {drodown && <div onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} className="absolute right-7 top-5 bg-white shadow-lg border rounded-md px-5 py-3 w-32">
               <ul>
                 <a href={'/myaccount'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>My Account</li></a>
-                 {roll==1 && <a href={'/admin'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Admin Dashboard</li></a>}
+                {roll == 1 && <a href={'/admin'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Admin Dashboard</li></a>}
                 <a href={'/Orders'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Orders</li></a>
                 <li onClick={logout} className='py-1 text-sm  hover:text-pink-700 font-bold '>Logout</li>
               </ul>
@@ -183,7 +166,7 @@ const [roll, setRoll] = useState(0)
               {drodown && <div onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} className="absolute right-7 top-5 bg-white shadow-lg border rounded-md px-5 py-3 w-32">
                 <ul>
                   <a href={'/myaccount'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>My Account</li></a>
-                 {roll==1 && <a href={'/admin'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Admin Dashboard</li></a>}
+                  {roll == 1 && <a href={'/admin'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Admin Dashboard</li></a>}
                   <a href={'/Orders'}><li className='py-1 text-sm  hover:text-pink-700 font-bold '>Orders</li></a>
                   <li onClick={logout} className='py-1 text-sm  hover:text-pink-700 font-bold '>Logout</li>
                 </ul>
@@ -193,23 +176,25 @@ const [roll, setRoll] = useState(0)
             {!user.value && <Link href='/Login'>
               <button className='bg-pink-500 px-2 rounded-md py-1 text-sm text-white mx-2'>Login</button>
             </Link>}
-            <AiOutlineShoppingCart onClick={()=>{toggleCart()
-             setToggle(false) }} className='text-xl md:text-3xl text-pink-600' />
+            <AiOutlineShoppingCart onClick={() => {
+              toggleCart()
+              setToggle(false)
+            }} className='text-xl md:text-3xl text-pink-600' />
 
 
-        
+
             <svg aria-hidden="true" className="w-5 absolute bottom-5 right-[89%] h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
 
-          <input
-            type="search"
-            id="default-search"
-            name='q'
-            value={query}
-            onChange={handleParam(setQuery)}
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Searching..."
-            required />
-          <button onClick={handleSubmit} className="text-white absolute right-6 bottom-6 bg-pink-500 hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  dark:focus:ring-blue-800">Search</button>
+            <input
+              type="search"
+              id="default-search"
+              name='q'
+              value={query}
+              onChange={handleParam(setQuery)}
+              className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Searching..."
+              required />
+            <button onClick={handleSubmit} className="text-white absolute right-6 bottom-6 bg-pink-500 hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2  dark:focus:ring-blue-800">Search</button>
 
 
 

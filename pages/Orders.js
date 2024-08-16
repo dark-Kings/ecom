@@ -10,30 +10,30 @@ const Orders = () => {
     const fetchOrder = async () => {
 
 
-        const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorders`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ token: JSON.parse(localStorage.getItem('myuser')).token }),
-        })
-        let res = await a.json()
-        setorders(res.orders)
-      }
-      if (!localStorage.getItem('myuser')) {
-        router.push('/')
-      }
-      else {
-        fetchOrder()
+      const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: JSON.parse(localStorage.getItem('myuser')).token }),
+      })
+      let res = await a.json()
+      setorders(res.orders)
+    }
+    if (!localStorage.getItem('myuser')) {
+      router.push('/')
+    }
+    else {
+      fetchOrder()
     }
 
 
   }, [router.query])
   return (
     <div className='min-h-screen p-12 bg-pink-50'>
-        <Head>
+      <Head>
         <title>Orders -codeswear.com</title>
-        </Head>
+      </Head>
       <h1 className='font-semibold text-center text-2xl p-8'>My Orders</h1>
       <div className="container  mx-auto">
         <div className="flex flex-col">
@@ -50,19 +50,19 @@ const Orders = () => {
                     </tr>
                   </thead>
                   <tbody>
-                   {orders.map((item,i)=>{
-                    return  <tr key={i}
-                    className="border-b transition duration-300 ease-in-out hover:bg-neutral-500 dark:border-neutral-500 dark:hover:bg-neutral-400">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">{item.orderId}</td>
-                    <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
-                    <td className="whitespace-nowrap px-6 py-4">{item.amount}</td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <Link href={`/Order/?id=${item._id}`}>Details</Link>
-                    </td>
-                  </tr>
-             
-                   })}
-                    
+                    {orders.map((item, i) => {
+                      return <tr key={i}
+                        className="border-b transition duration-300 ease-in-out hover:bg-neutral-500 dark:border-neutral-500 dark:hover:bg-neutral-400">
+                        <td className="whitespace-nowrap px-6 py-4 font-medium">{item.orderId}</td>
+                        <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
+                        <td className="whitespace-nowrap px-6 py-4">{item.amount}</td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <Link href={`/Order/?id=${item._id}`}>Details</Link>
+                        </td>
+                      </tr>
+
+                    })}
+
 
 
                   </tbody>
@@ -77,17 +77,5 @@ const Orders = () => {
 }
 
 
-// export async function getServerSideProps(context) {
-//   if (!mongoose.connections[0].readyState) {
-
-//     mongoose.connect(process.env.MONGO_URI)
-//   }
-//   let orders = await Order.find()
-
-
-//   return {
-//     props: { orders: orders }, // will be passed to the page component as props
-//   }
-// }
 
 export default Orders
