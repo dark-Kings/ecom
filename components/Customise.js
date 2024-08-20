@@ -30,21 +30,21 @@ const Customise = () => {
               <div className={`${styles["carousel-item"]} ${styles.active}`}>
                 <div className={styles.container}>
                   {/* <div className={styles.row}> */}
-                    {/* <div className={ `${styles['col-md-7']} ${styles['col-lg-6']}`}> */}
-                    <div className={styles["detail-box"]}>
-                      <h1>
-                        <span>At Low</span>
-                        <br />
-                        Rate
-                      </h1>
-                      <p>Print your own design on T shirt Design</p>
-                      <div className={styles["btn-box"]}>
-                        <a href="https://clothifycustomize.netlify.app/" target="black" className={styles.btn1}>
-                          Shop Now
-                        </a>
-                      </div>
+                  {/* <div className={ `${styles['col-md-7']} ${styles['col-lg-6']}`}> */}
+                  <div className={styles["detail-box"]}>
+                    <h1>
+                      <span>At Low</span>
+                      <br />
+                      Rate
+                    </h1>
+                    <p>Print your own design on T shirt Design</p>
+                    <div className={styles["btn-box"]}>
+                      <a href="https://personalisetshirt.netlify.app/" target="black" className={styles.btn1}>
+                        Shop Now
+                      </a>
                     </div>
-                    {/* </div> */}
+                  </div>
+                  {/* </div> */}
                   {/* </div> */}
                 </div>
               </div>
@@ -53,21 +53,21 @@ const Customise = () => {
               <div className={`${styles["carousel-item"]} ${styles.active}`}>
                 <div className={styles.container}>
                   {/* <div className={styles.row}> */}
-                    {/* <div className={`${styles['col-md-7']} ${styles['col-lg-6']}`}> */}
-                    <div className={styles["detail-box"]}>
-                      <h1>
-                        <span>Special Offers</span>
-                        <br />
-                        Includes
-                      </h1>
-                      <p>Print your own customise design in clothes</p>
-                      <div className={styles["btn-box"]}>
-                        <a href="https://clothifycustomize.netlify.app/" target="blank" className={styles.btn1}>
-                          Try Now
-                        </a>
-                      </div>
+                  {/* <div className={`${styles['col-md-7']} ${styles['col-lg-6']}`}> */}
+                  <div className={styles["detail-box"]}>
+                    <h1>
+                      <span>Special Offers</span>
+                      <br />
+                      Includes
+                    </h1>
+                    <p>Print your own customise design in clothes</p>
+                    <div className={styles["btn-box"]}>
+                      <a href="https://personalisetshirt.netlify.app/" target="blank" className={styles.btn1}>
+                        Try Now
+                      </a>
                     </div>
-                    {/* </div> */}
+                  </div>
+                  {/* </div> */}
                   {/* </div> */}
                 </div>
               </div>
