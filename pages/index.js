@@ -9,8 +9,9 @@ import Link from 'next/link'
 import Product from '../models/Product'
 import mongoose from 'mongoose';
 import Customise from "../components/Customise";
+import Image from 'next/image';
 
-export default function Home({products}) {
+export default function Home({ products }) {
   return (
     <div>
       <Head>
@@ -22,8 +23,8 @@ export default function Home({products}) {
       <Whyus />
       <Arrivals />
 
-      
-          <div id="productssssss" className="allproduct_container pb-10">
+
+      <div id="productssssss" className="allproduct_container pb-10">
         <h2 className="p-10 text-center font-semibold text-[80px] allproduct_containerh2">Products</h2>
         <section className="text-gray-600 body-font">
           <div>
@@ -44,10 +45,13 @@ export default function Home({products}) {
                   >
                     <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer bg-pink-50">
                       <a className="block relative  rounded overflow-hidden">
-                        <img
+
+                        <Image
                           alt="ecommerce"
-                          className="m-auto  h-[30vh] md:h-[36vh] block"
+                          className="m-auto h-[30vh] md:h-[36vh] block"
                           src={products[item].img}
+                          width={500} // Specify the width
+                          height={500} // Specify the height
                         />
                       </a>
                       <div className="mt-4 text-center md:text-left">
@@ -55,7 +59,7 @@ export default function Home({products}) {
                           Hoodies
                         </h3>
                         <h2 className="text-gray-900 title-font text-lg font-medium">
-                          {products[item].title}
+                          {`${products[item].title.length > 40 ? products[item].title.substring(0, 40) + '...' : products[item].title}`}
                         </h2>
                         <p className="mt-1">₹ {products[item].price}</p>
                         <div className="mt-1">
@@ -71,7 +75,7 @@ export default function Home({products}) {
                           )}
                           {products[item].size.includes("L") && (
                             <span className="border border-gray-300 mx-1 px-1">
-                              XL
+                              L
                             </span>
                           )}
                           {products[item].size.includes("XL") && (
@@ -99,7 +103,7 @@ export default function Home({products}) {
                             <button className="border-2 border-green-500 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
                           )}
                           {products[item].color.includes("black") && (
-                            <button className="border-2 border-black-500 ml-1 bg-black-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                            <button className="border-2 border-black-500 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
                           )}
                           {products[item].color.includes("blue") && (
                             <button className="border-2 border-blue-500 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
@@ -109,57 +113,57 @@ export default function Home({products}) {
                     </div>
                   </Link>
                 );
-              })}            
-              </div>
+              })}
+            </div>
           </div>
-      </section>
-    </div>
- 
+        </section>
+      </div>
 
 
-            
-      <Customise/>
-        <Testimonial />
+
+
+      <Customise />
+      <Testimonial />
       <Subscribe />
-      
 
 
 
-     </div>
+
+    </div>
   );
 }
 
 
 export async function getServerSideProps(context) {
-  if(!mongoose.connections[0].readyState){
-   
-  mongoose.connect(process.env.MONGO_URI)
+  if (!mongoose.connections[0].readyState) {
+
+    mongoose.connect(process.env.MONGO_URI)
   }
   let products = await Product.find()
   let AllProducts = {}
-  for(let item of products){
-     if(item.title in AllProducts){
-      if(!AllProducts[item.title].color.includes(item.color) && item.availableQty>0){
+  for (let item of products) {
+    if (item.title in AllProducts) {
+      if (!AllProducts[item.title].color.includes(item.color) && item.availableQty > 0) {
         AllProducts[item.title].color.push(item.color);
-       }
-      if(!AllProducts[item.title].size.includes(item.size) && item.availableQty>0){ 
+      }
+      if (!AllProducts[item.title].size.includes(item.size) && item.availableQty > 0) {
         AllProducts[item.title].size.push(item.size);
-       }
-     }
-     else{
-      AllProducts[item.title]=JSON.parse(JSON.stringify(item))
-      if(item.availableQty>0){
+      }
+    }
+    else {
+      AllProducts[item.title] = JSON.parse(JSON.stringify(item))
+      if (item.availableQty > 0) {
         AllProducts[item.title].color = [item.color]
-        AllProducts[item.title].size=[item.size]
+        AllProducts[item.title].size = [item.size]
       }
-      else{
+      else {
         AllProducts[item.title].color = []
-        AllProducts[item.title].size=[]
+        AllProducts[item.title].size = []
       }
-     }
+    }
   }
   return {
-    props: {products:JSON.parse(JSON.stringify(AllProducts))}, // will be passed to the page component as props
+    props: { products: JSON.parse(JSON.stringify(AllProducts)) }, // will be passed to the page component as props
   }
 }
 

@@ -4,6 +4,7 @@ import Product from "../../models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
 import Dashboard from './Dashboard'
+import Image from 'next/image';
 
 export default function Home({ products }) {
     return (
@@ -13,7 +14,7 @@ export default function Home({ products }) {
             </Head>
 
             <div className='flex min-h-screen'>
-       
+
                 <div className='bg-pink-300 min-h-screen w-1/4 pt-24 flex flex-col'>
                     <Dashboard />
                 </div>
@@ -39,18 +40,26 @@ export default function Home({ products }) {
                                         >
                                             <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg my-2 cursor-pointer bg-pink-50">
                                                 <a className="block relative  rounded overflow-hidden">
-                                                    <img
+                                                    {/* <img
                                                         alt="ecommerce"
                                                         className="m-auto  h-[30vh] md:h-[36vh] block"
                                                         src={products[item].img}
+                                                    /> */}
+                                                    <Image
+                                                        alt="ecommerce"
+                                                        className="m-auto h-[30vh] md:h-[36vh] block"
+                                                        src={products[item].img}
+                                                        width={500} // Specify the width
+                                                        height={500} // Specify the height
                                                     />
                                                 </a>
                                                 <div className="mt-4 text-center md:text-left">
                                                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                                                        Hoodies
+                                                        {products[item].category}
                                                     </h3>
                                                     <h2 className="text-gray-900 title-font text-lg font-medium">
-                                                        {products[item].title}
+
+                                                        {`${products[item].title.length > 30 ? products[item].title.substring(0, 30) + '...' : products[item].title}`}
                                                     </h2>
                                                     <p className="mt-1">₹ {products[item].price}</p>
                                                     <div className="mt-1">
@@ -66,7 +75,7 @@ export default function Home({ products }) {
                                                         )}
                                                         {products[item].size.includes("L") && (
                                                             <span className="border border-gray-300 mx-1 px-1">
-                                                                XL
+                                                                L
                                                             </span>
                                                         )}
                                                         {products[item].size.includes("XL") && (
@@ -94,7 +103,7 @@ export default function Home({ products }) {
                                                             <button className="border-2 border-green-500 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
                                                         )}
                                                         {products[item].color.includes("black") && (
-                                                            <button className="border-2 border-black-500 ml-1 bg-black-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                                                            <button className="border-2 border-black-500 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
                                                         )}
                                                         {products[item].color.includes("blue") && (
                                                             <button className="border-2 border-blue-500 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>

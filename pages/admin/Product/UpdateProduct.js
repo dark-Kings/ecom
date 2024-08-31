@@ -5,7 +5,8 @@ import Product from "../../../models/Product";
 import mongoose from "mongoose";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { data } from 'autoprefixer';
+import Image from 'next/image';
+// import { data } from 'autoprefixer';
 
 const UpdateProduct = ({ product, variants, error }) => {
   const [user, setUser] = useState({ value: null })
@@ -89,7 +90,7 @@ const UpdateProduct = ({ product, variants, error }) => {
 
   const handleUpdate = async () => {
 
-    let data = { img, price, availableQty,desc,Sslug }
+    let data = { img, price, availableQty, desc, Sslug }
 
     //  console.log(data)
     const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updProd`, {
@@ -129,47 +130,47 @@ const UpdateProduct = ({ product, variants, error }) => {
     }
   }
 
- const handleDelete = async()=>{
-  const data = {slug:Sslug}
-  const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/dleProd`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data),
-  })
+  const handleDelete = async () => {
+    const data = { slug: Sslug }
+    const a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/dleProd`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
 
-  let res = await a.json();
-  if (res.success) {
-    toast.success("Product Deleted successfully", {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    const url = "/admin/Products"
-    setTimeout(() => {
-      router.push(url)
-    },800);
+    let res = await a.json();
+    if (res.success) {
+      toast.success("Product Deleted successfully", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      const url = "/admin/Products"
+      setTimeout(() => {
+        router.push(url)
+      }, 800);
 
+    }
+    else {
+      toast.error(res.error, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   }
-  else {
-    toast.error(res.error, {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  }
- }
 
   return (
     <div className='flex min-h-screen'>
@@ -194,7 +195,14 @@ const UpdateProduct = ({ product, variants, error }) => {
         <h1 className='text-3xl font-bold  text-center pt-20'>Current Product</h1>
         <div className="container px-5 pt-10 mx-auto my-5">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <img alt="ecommerce" className="lg:w-1/2 sm:m-auto w-full sm:w-96  px-16 lg:h-auto  object-cover object-top rounded " src={product.img} />
+            {/* <img alt="ecommerce" className="lg:w-1/2 sm:m-auto w-full sm:w-96  px-16 lg:h-auto  object-cover object-top rounded " src={product.img} /> */}
+            <Image
+              alt="ecommerce"
+              className="lg:w-1/2 sm:m-auto w-full sm:w-96  px-16 lg:h-auto  object-cover object-top rounded "
+              src={product.img}
+              width={500} // Specify the width
+              height={500} // Specify the height
+            />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">CODESWEAR</h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.title} ({product.size}/{product.color})</h1>
@@ -206,7 +214,7 @@ const UpdateProduct = ({ product, variants, error }) => {
                   {Object.keys(variants).includes("red") && Object.keys(variants['red']).includes(size) && <button onClick={(e) => { refreshVariant(size, "red") }} className={`border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none ${color === 'red' ? 'border-black' : 'border-gray-300'}`}></button>}
                   {Object.keys(variants).includes("green") && Object.keys(variants['green']).includes(size) && <button onClick={(e) => { refreshVariant(size, "green") }} className={`border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color === 'green' ? 'border-black' : 'border-gray-300'}`}></button>}
                   {Object.keys(variants).includes("yellow") && Object.keys(variants['yellow']).includes(size) && <button onClick={(e) => { refreshVariant(size, "yellow") }} className={`border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none ${color === 'yellow' ? 'border-black' : 'border-gray-300'}`}></button>}
-                  {Object.keys(variants).includes("black") && Object.keys(variants['black']).includes(size) && <button onClick={(e) => { refreshVariant(size, "black") }} className={`border-2 border-gray-300 ml-1 bg-black-500 rounded-full w-6 h-6 focus:outline-none ${color === 'black' ? 'border-black' : 'border-gray-300'}`}></button>}
+                  {Object.keys(variants).includes("black") && Object.keys(variants['black']).includes(size) && <button onClick={(e) => { refreshVariant(size, "black") }} className={`border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${color === 'black' ? 'border-black' : 'border-gray-300'}`}></button>}
                   {Object.keys(variants).includes("blue") && Object.keys(variants['blue']).includes(size) && <button onClick={(e) => { refreshVariant(size, "blue") }} className={`border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none ${color === 'blue' ? 'border-black' : 'border-gray-300'}`}></button>}
                 </div>
                 <div className="flex ml-6 items-center">
@@ -215,7 +223,7 @@ const UpdateProduct = ({ product, variants, error }) => {
                     <select value={size} onChange={(e) => { refreshVariant(e.target.value, color) }} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-pink-500 text-base pl-3 pr-10">
                       {color && Object.keys(variants[color]).includes('S') && <option value={'S'}>S</option>}
                       {color && Object.keys(variants[color]).includes('M') && <option value={'M'}>L</option>}
-                      {color && Object.keys(variants[color]).includes('L') && <option value={'L'}>XL</option>}
+                      {color && Object.keys(variants[color]).includes('L') && <option value={'L'}>L</option>}
                       {color && Object.keys(variants[color]).includes('XL') && <option value={'XL'}>XL</option>}
                       {color && Object.keys(variants[color]).includes('XXL') && <option value={'XXL'}>XXL</option>}
                     </select>
@@ -231,7 +239,7 @@ const UpdateProduct = ({ product, variants, error }) => {
           </div>
         </div>
 
-     <hr />
+        <hr />
 
         <div className='container  my-5'>
           <h1 className='text-3xl font-bold  text-center'>Update Product</h1>
@@ -287,7 +295,7 @@ const UpdateProduct = ({ product, variants, error }) => {
               <input type="text"
                 id="size"
                 name="size"
-              readOnly={true}
+                readOnly={true}
                 value={size}
                 className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
